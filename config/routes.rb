@@ -22,7 +22,13 @@ Rails.application.routes.draw do
     namespace :admins do
       get "/" => "homes#top"
       resources :users, only:[:index, :show, :update]
-      resources :companies, only:[:index, :creste]
+      resources :companies, only:[:index, :create]
+    end
+
+    namespace :companies do
+      resources :companies, only:[:show, :edit, :update] do
+        resources :jobs
+      end
     end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
