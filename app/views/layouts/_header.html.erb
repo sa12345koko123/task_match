@@ -1,0 +1,47 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light mb-4">
+    <div class="container">
+      <a class="navbar-brand"></a>
+      <% if user_signed_in? %>
+        <p class="text-dark m-2">ようこそ、<%= current_user.full_name%> さん!</p>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+
+
+        <% if admins_admin_signed_in? %>
+          <div class="ml-3">
+            <% link_to admins_admins_path, class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-user"></i>&nbsp;管理者TOP
+            <% end %>
+          </div>
+          <div class="ml-1">
+            <%= link_to destroy_admins_admin_session_path, method: :delete,class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-sign-out-alt"></i>&nbsp;ログアウト
+            <% end %>
+          </div>
+        <% end %>
+
+
+        <%if companies_company_signed_in? %>
+          <div class="ml-1">
+            <%= link_to companies_company_path(current_companies_company), class: 'btn btn-danger' do %>
+　　　　　　　<i class="fas fa-sign-out-alt"></i>&nbsp;会社TOP
+            <% end %>
+          </div>
+          <div class="ml-1">
+            <%= link_to destroy_companies_company_session_path, method: :delete, class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-sign-out-alt"></i>&nbsp;会社ログアウト
+            <% end %>
+          </div>
+        <% end %>
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

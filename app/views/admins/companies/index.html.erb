@@ -11,21 +11,3 @@
 <%= company.created_at %>
 
 <% end %>
-
-<h2>会社新規登録</h2>
-
-<% if flash[:success] %>
-  <p><%= flash[:success] %></p>
-<% end %>
-
-<%= form_with model: @company, url: admins_companies_path, method: :post do |f| %>
-
-<%= f.text_field :company_name %>
-<%= f.email_field :email %>
-<%= f.text_field :address %>
-<%= f.text_field :phone_number %>
-<%= f.text_field :home_page %>
-
-<%= f.submit "登録", class: "btn btn-primary" %>
-
-<% end %>

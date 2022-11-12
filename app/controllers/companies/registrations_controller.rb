@@ -38,6 +38,15 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def after_sign_up_path_for(resource)
+    companies_company_path(resource)
+  end
+
+  def after_update_path_for(resource)
+    companies_company_path(resource)
+  end
+
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -59,4 +68,5 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
 end

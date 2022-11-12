@@ -1,0 +1,14 @@
+<h2>店舗名:<%= @company.company_name %>様</h2>
+
+<p><%= @company.address %></p>
+
+<p><%= @company.phone_number %></p>
+
+<p><%= @company.home_page %></p>
+
+<p>仕事数：<%= @jobs.count %></p>
+<%= link_to '会社情報の編集', edit_companies_company_path %>
+
+<%= link_to '仕事一覧', companies_company_jobs_path(@company) %>
+
+<!--予約履歴-->

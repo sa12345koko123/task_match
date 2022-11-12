@@ -1,0 +1,29 @@
+<h2>仕事依頼一覧</h2>
+
+<% @jobs.each do |job| %>
+
+  <%= job.id %>
+
+  <%= link_to companies_company_job_path(job.id) do %>
+  <%= job.title %>
+  <% end %>
+
+  <%= job.description %>
+  <%= job.unit_price %>
+
+  <% if job.job_status == true %>
+    <%= '受付中' %>
+  <% else %>
+    <%= '締切中' %>
+  <% end %>
+<% end %>
+
+<!--< if current_companies_company == @companies %>-->
+  <%= link_to '仕事の依頼を追加', new_companies_company_job_path %>
+<!--< else %>-->
+  <!--<p>管理権限がある方のみ編集可能です</p>-->
+<!--< end %>-->
+
+
+
+
