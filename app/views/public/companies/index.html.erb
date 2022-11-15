@@ -1,0 +1,13 @@
+<h2>会社一覧</h2>
+
+<% @companies.each do |company| %>
+
+<%= company.id %>
+
+<%= link_to company_path(company) do %>
+<%= company.company_name %>
+<% end %>
+
+<%= company.created_at %>
+
+<% end %>

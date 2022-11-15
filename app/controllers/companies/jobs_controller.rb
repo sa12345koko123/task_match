@@ -19,21 +19,22 @@ class Companies::JobsController < ApplicationController
   end
 
   def index
-    logger.debug '=============================================================='
-    logger.debug params[:id].inspect
-    logger.debug params[:company_id]
-    logger.debug '=============================================================='
+    # logger.debug '=============================================================='
+    # logger.debug params[:id].inspect
+    # logger.debug params[:company_id]
+    # logger.debug '=============================================================='
     @company = Company.find(params[:company_id])
-    # @jobs = Job.all
     @jobs = @company.jobs
   end
 
   def show
+    @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
-    # @job = @companiy.job
+    @comments = @job.comments
   end
 
   def edit
+     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
   end
 
@@ -41,7 +42,8 @@ class Companies::JobsController < ApplicationController
     @job = Job.find(params[:id])
     if @job.update(job_params)
       flash[:notice] = '仕事を更新しました'
-      redirect_to company_job_path(@job.id)
+      @company =Company.find(params[:company_id])
+      redirect_to companies_company_job_path(@company)
     else
       render :edit
     end
@@ -50,7 +52,8 @@ class Companies::JobsController < ApplicationController
   def destroy
     job = Job.find(params[:id])
     job.destroy
-    redirect_to company_jobs_path
+    @company =Company.find(params[:company_id])
+    redirect_to companies_company_jobs_path(@company)
   end
 
   private

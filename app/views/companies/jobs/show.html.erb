@@ -1,0 +1,27 @@
+<h2>仕事依頼詳細</h2>
+
+<%= @job.title %>
+
+<%= @job.unit_price %>
+
+<%= @job.description %>
+
+<% if @job.job_status == true %>
+<p>受付中</p>
+<% else %>
+<p>締切中</p>
+<% end %>
+
+
+<%= link_to '編集', edit_companies_company_job_path(@company, @job) %>
+<%= link_to '削除', "/companies/companies/#{@company.id}/jobs/#{@job.id}", method: :delete %>
+
+
+質問
+<% @comments.each do |comment| %>
+  <tr>
+    <td><%= comment.user.name_family %></td>
+    <td><%= comment.comment_content %></td>
+    <td><%= link_to "削除", job_comment_path(@job, comment), method: :delete %></td>
+  </tr>
+<% end %>

@@ -25,7 +25,7 @@ class Companies::CompaniesController < ApplicationController
 
   private
   def company_params
-    params.require(:company).permit(:email, :company_name, :address, :phone_number, :home_page)
+    params.require(:company).permit(:email, :company_name, :address, :phone_number, :home_page, :overview)
   end
 
 

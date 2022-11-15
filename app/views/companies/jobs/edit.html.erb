@@ -1,0 +1,17 @@
+<%= form_with model: @job, url: companies_company_job_path(@company) do |f| %>
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<%= f.label :unit_price, '単価：' %>
+<%= f.text_field :unit_price %>
+
+<%= f.label :description, '内容/説明' %>
+<%= f.text_field :description %>
+
+<%= f.label :job_status, '依頼ステータス' %>
+<%= f.select :job_status, [['受付中', true], ['締切中', false]] %>
+
+<%= f.submit "登録", class: "btn btn-primary" %>
+
+<% end %>

@@ -4,7 +4,7 @@
 
   <%= job.id %>
 
-  <%= link_to companies_company_job_path(job.id) do %>
+  <%= link_to companies_company_job_path(@company,job.id) do %>
   <%= job.title %>
   <% end %>
 

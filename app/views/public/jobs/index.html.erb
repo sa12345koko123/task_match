@@ -1,0 +1,19 @@
+<h2>仕事依頼一覧</h2>
+
+<% @jobs.each do |job| %>
+
+  <%= job.id %>
+
+
+  <%= link_to job_path(job) do %>
+  <%= job.title %>
+  <% end %>
+
+  <%= job.unit_price %>
+
+  <% if job.job_status == true %>
+    <%= '受付中' %>
+  <% else %>
+    <%= '締切中' %>
+  <% end %>
+<% end %>

@@ -14,13 +14,32 @@ Rails.application.routes.draw do
 
 
 
-
   devise_for :users, controllers: {
-      sessions: 'users/sessions',
-      registrations: 'users/registrations',
-      passwords: 'users/passwords',
-      confirmations: 'users/confirmations'
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords',
+    confirmations: 'users/confirmations'
     }
+
+  scope module: :public do
+    root to: "homes#top"
+    get '/about' => "homes#about", as: "about"
+    get 'users/my_page' => 'users#show'
+    resources :users, only:[:update, :edit] do
+      resources :orders, only:[:index, :show, :new, :create]
+      get 'orders/confirm/' => 'orders#confirm'
+      get 'orders/complete' => 'orders#complete'
+
+    end
+    get 'users/unsubscribe' => 'users#unsubscribe'
+    patch 'users/withdrawal' => 'users#withdrawal'
+    resources :companies, only:[:index, :show]
+    resources :jobs, only:[:index, :show] do
+      resources :comments, only: [:create, :destroy]
+    end
+
+  end
+
 
 
   namespace :admins do

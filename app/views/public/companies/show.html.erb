@@ -1,0 +1,14 @@
+<h2>会社名:<%= @company.company_name %>様</h2>
+
+<p><%= @company.address %></p>
+
+<p><%= @company.phone_number %></p>
+
+<p><%= @company.home_page %></p>
+
+<p><%= @company.overview %></p>
+
+<p>仕事数：<%= @jobs.count %></p>
+
+<%= link_to '仕事依頼一覧', jobs_path %>
+<%= link_to '仕事一覧に戻る', companies_path %>

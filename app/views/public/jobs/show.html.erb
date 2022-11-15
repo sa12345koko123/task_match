@@ -1,0 +1,39 @@
+<h2>仕事依頼詳細</h2>
+
+<%= @job.title %>
+
+<%= @job.unit_price %>
+
+<%= @job.description %>
+
+<% if @job.job_status == true %>
+<p>受付中</p>
+<% else %>
+<p>締切中</p>
+<% end %>
+
+
+
+<%#= link_to '日程選択へ', orders_path %>
+
+<%= form_with url: user_orders_path(current_user), method: :get, local: true do |f| %>
+  <%= f.hidden_field :job_id, value: params[:id] %>
+  <%= f.submit '予約情報を入力する', class: "btn btn-success" %>
+<% end %>
+
+
+
+※ご質問があれば気軽にご記入ください
+<%= form_with model: [@job, @comment] do |f| %>
+  <%= f.text_area :comment_content, size: "40x5" %>
+  <%= f.submit '送信', class: "btn-sm btn-primary" %>
+<% end %>
+
+
+<% @comments.each do |comment| %>
+  <tr>
+    <td><%= comment.user.name_family %></td>
+    <td><%= comment.comment_content %></td>
+    <td><%= link_to "削除", job_comment_path(@job, comment), method: :delete %></td>
+      </tr>
+    <% end %>

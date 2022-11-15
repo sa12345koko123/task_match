@@ -1,10 +1,12 @@
-<h2>店舗名:<%= @company.company_name %>様</h2>
+<h2>会社名:<%= @company.company_name %>様</h2>
 
 <p><%= @company.address %></p>
 
 <p><%= @company.phone_number %></p>
 
 <p><%= @company.home_page %></p>
+
+<p><%= @company.overview %></p>
 
 <p>仕事数：<%= @jobs.count %></p>
 <%= link_to '会社情報の編集', edit_companies_company_path %>

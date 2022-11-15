@@ -3,7 +3,7 @@
     <div class="container">
       <a class="navbar-brand"></a>
       <% if user_signed_in? %>
-        <p class="text-dark m-2">ようこそ、<%= current_user.full_name%> さん!</p>
+        <p class="text-dark m-2">ようこそ、<%= current_user.name_family %> さん!</p>
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -37,6 +37,21 @@
               <i class="fas fa-sign-out-alt"></i>&nbsp;会社ログアウト
             <% end %>
           </div>
+        <% end %>
+
+
+        <% if user_signed_in? %>
+          <div class="ml-1">
+            <%= link_to users_my_page_path(current_user), class: 'btn btn-danger' do %>
+　　　　　　　<i class="fas fa-sign-out-alt"></i>&nbsp;マイページ
+            <% end %>
+          </div>
+          <div class="ml-1">
+            <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn btn-light btn-block text-dark' do %>
+              <i class="fas fa-sign-out-alt"></i>&nbsp;ログアウト
+            <% end %>
+          </div>
+
         <% end %>
 
 
