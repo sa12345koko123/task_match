@@ -42,7 +42,40 @@
 			<th>プロフィール</th>
 			<td><%= @user.profile %></td>
 		</tr>
-<!--予約履歴一覧-->
   </table>
+
+  <div class="col-12 mt-3 text-center mx-auto">
+    <h3>予約一覧</h3>
+      <table class="table">
+        <thead>
+          <tr>
+          	<th scope="col">依頼タイトル</th>
+            <th>予約日</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @orders.each do |order| %>
+          <td><%= link_to job_path(order.job.id) do %>
+          	    <%= order.job.title %>
+          	  <% end %>
+          	</td>
+          <td>
+            <%= order.day %>
+            <%= order.time %>
+          </td>
+          <td>
+            <%= link_to '削除', user_order_path(current_user, order.id), method: :delete, data: { confirm: "削除してよろしいですか？", commit: "削除する", cancel: "やめる", title: "ご確認ください" } %>
+          </td>
+          </tr>
+        <% end %>
+        <% if @orders.blank? %>
+          <tr>
+            <td>予約はありません。</td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

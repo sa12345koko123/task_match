@@ -1,7 +1,9 @@
 class Public::UsersController < ApplicationController
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
+    @orders = current_user.orders.where("day >= ?", Date.current).order(day: :desc)
+    # byebug
     # @user_orders = current_user.orders.where("start_time >= ?", DateTime.current).order(day: :desc)
   end
 

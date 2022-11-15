@@ -25,6 +25,7 @@ class Public::OrdersController < ApplicationController
     @job = Job.find(params[:job])
     @order.job_id = @job.id
     if @order.save!
+      # byebug
       redirect_to user_order_path(current_user.id, @order.id)
     else
       render :new
@@ -33,6 +34,18 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @job = @order.job
+    # byebug
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    if @order.destroy
+      # byebug
+      redirect_to request.referer, flash: { success: "予約を削除しました" }
+    else
+      render :show, flash: { error: "予約の削除に失敗しました" }
+    end
   end
 
 

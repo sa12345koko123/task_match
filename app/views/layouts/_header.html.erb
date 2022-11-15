@@ -42,7 +42,7 @@
 
         <% if user_signed_in? %>
           <div class="ml-1">
-            <%= link_to users_my_page_path(current_user), class: 'btn btn-danger' do %>
+            <%= link_to user_path(current_user), class: 'btn btn-danger' do %>
 　　　　　　　<i class="fas fa-sign-out-alt"></i>&nbsp;マイページ
             <% end %>
           </div>

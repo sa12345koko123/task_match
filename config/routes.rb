@@ -24,11 +24,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get '/about' => "homes#about", as: "about"
-    get 'users/my_page' => 'users#show'
-    resources :users, only:[:update, :edit] do
-      resources :orders, only:[:index, :show, :new, :create]
-      get 'orders/confirm/' => 'orders#confirm'
-      get 'orders/complete' => 'orders#complete'
+    # get 'users/my_page' => 'users#show'
+    resources :users, only:[:show, :update, :edit] do
+      resources :orders, only:[:index, :show, :new, :create, :destroy]
+      # get 'orders/confirm/' => 'orders#confirm'
+      # get 'orders/complete' => 'orders#complete'
 
     end
     get 'users/unsubscribe' => 'users#unsubscribe'
