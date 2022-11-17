@@ -4,12 +4,13 @@ class Public::CommentsController < ApplicationController
     @job = Job.find(params[:job_id])
     @comment = @job.comments.new(comment_params)
     @comment.user_id = current_user.id
-    if @comment.save
+    # byebug
+    if @comment.save!
       redirect_to request.referer
     else
       @job_new = Job.new
       @comments = @job.comments
-      redirect_to new_post_path
+      redirect_to
     end
   end
 
@@ -23,6 +24,6 @@ class Public::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment_content)
+    params.require(:comment).permit(:comment_content, :job_id)
   end
 end

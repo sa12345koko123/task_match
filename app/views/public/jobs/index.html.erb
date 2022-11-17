@@ -1,19 +1,32 @@
-<h2>仕事依頼一覧</h2>
+<div class="container">
+  <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-12">仕事依頼一覧</h4>
 
-<% @jobs.each do |job| %>
-
-  <%= job.id %>
-
-
-  <%= link_to job_path(job) do %>
-  <%= job.title %>
-  <% end %>
-
-  <%= job.unit_price %>
-
-  <% if job.job_status == true %>
-    <%= '受付中' %>
-  <% else %>
-    <%= '締切中' %>
-  <% end %>
-<% end %>
+  <table class="table">
+    <thead class="thead-light">
+      <th  scope="col" style="width: 5%">依頼ID</th>
+      <th  scope="col" style="width: 5%">依頼名</th>
+      <th scope="col" style="width: 5%">単価格</th>
+      <th scope="col" style="width: 5%">ステータス</th>
+    </thead>
+    <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.id %></td>
+        <td>
+          <%= link_to job_path(job) do %>
+            <%= job.title %>
+          <% end %>
+        </td>
+        <td><%= job.unit_price %></td>
+        <td>
+          <% if job.job_status == true %>
+            <p class="text-success ">受付中</p>
+          <% else %>
+            <p class="text-secondary ">締切中</p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

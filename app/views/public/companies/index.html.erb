@@ -1,13 +1,24 @@
-<h2>会社一覧</h2>
+<div class="container">
+  <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-12">会社一覧</h4>
 
-<% @companies.each do |company| %>
-
-<%= company.id %>
-
-<%= link_to company_path(company) do %>
-<%= company.company_name %>
-<% end %>
-
-<%= company.created_at %>
-
-<% end %>
+  <table class="table">
+    <thead class="thead-light">
+      <th  scope="col" style="width: 5%">会社ID</th>
+      <th  scope="col" style="width: 5%">会社名</th>
+      <th scope="col" style="width: 5%">登録日</th>
+    </thead>
+    <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.id %></td>
+        <td>
+          <%= link_to company_path(company) do %>
+            <%= company.company_name %>
+          <% end %>
+        </td>
+        <td><%= company.created_at %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

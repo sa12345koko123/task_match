@@ -1,0 +1,29 @@
+<div class="container">
+  <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-12">予定詳細</h4>
+    <div class="row">
+      <div class="col-md-12 text-center mt-5">
+        <table class="table table-borderless h4">
+          <tr>
+            <th>タイトル</th>
+            <td><%= @blog.title %></td>
+          </tr>
+
+          <tr>
+            <th>内容</th>
+            <td><%= @blog.content %></td>
+          </tr>
+
+          <tr>
+            <th>予定日</th>
+            <td><%= @blog.start_time.strftime("%m-%d") %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to '戻る', companies_company_blogs_path(current_companies_company), class: "btn btn-success" %>
+　　    <%= link_to "削除", companies_company_blog_path(@blog.id), method: :delete, date: {confirm: '本当に？' }, class: 'btn btn-danger' %>
+      </div>
+    </div>
+</div>

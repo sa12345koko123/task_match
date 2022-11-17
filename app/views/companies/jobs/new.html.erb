@@ -1,8 +1,14 @@
 <!--< if @current_companies_company == @company %>-->
-
-<h2>仕事依頼追加画面</h2>
-
-<%= render partial: 'form', locals: { job: @job } %>
+<div class="container">
+  <div class="row">
+    <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-12">仕事依頼追加画面</h4>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2 mt-4">
+　　  <%= render partial: 'form', locals: { job: @job } %>
+　　</div>
+  </div>
+</div>
 
 
 <!--<else %>-->

@@ -1,9 +1,29 @@
-<h1>Task-Match</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="mt-2 p-2 text-center bg-secondary text-white">Task-Match</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4 text-center">
+      <button class="button"><%= link_to '会社一覧', companies_path, class:"text-dark" %></button>
+    </div>
+    <div class="col-sm-4 text-center">
+      <button class="button"><%= link_to 'ログイン', new_user_session_path, class:"text-dark" %></button>
+    </div>
+    <div class="col-sm-4 text-center">
+      <button class="button"><%= link_to '仕事依頼一覧', jobs_path, class:"text-dark" %></button>
+    </div>
+  </div>
 
 
-<%= link_to '会社一覧', companies_path %>
-<%= link_to '仕事依頼一覧', jobs_path %>
+    <div class="row">
+      <div class="col-md-12 text-center mt-2">
+      <button class="button"><%= link_to '会社管理者の方はこちら', new_companies_company_session_path, class:"text-dark" %></button>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'ログイン', new_user_session_path %>
 
-<%= link_to '会社管理者の方はこちら', new_companies_company_session_path %>
+

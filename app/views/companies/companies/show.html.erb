@@ -1,16 +1,39 @@
-<h2>会社名:<%= @company.company_name %>様</h2>
+<div class="container">
+  <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-12">会社名:<%= @company.company_name %>様</h4>
+    <div class="row">
+      <div class="col-md-5 mt-5 text-center">
+          イメージ
+      </div>
+      <div class="col-md-7 mt-5">
+        <table class="table table-borderless h4">
+          <tr>
+            <th>会社住所</th>
+            <td><%= @company.address %></td>
+          </tr>
 
-<p><%= @company.address %></p>
+          <tr>
+            <th>会社電話番号</th>
+            <td><%= @company.phone_number %></td>
+          </tr>
 
-<p><%= @company.phone_number %></p>
+          <tr>
+            <th>ホームページURL</th>
+            <td><%= @company.home_page %></td>
+          </tr>
 
-<p><%= @company.home_page %></p>
-
-<p><%= @company.overview %></p>
-
-<p>仕事数：<%= @jobs.count %></p>
-<%= link_to '会社情報の編集', edit_companies_company_path %>
-
-<%= link_to '仕事一覧', companies_company_jobs_path(@company) %>
-
-<!--予約履歴-->
+          <tr>
+            <th>概要</th>
+            <td><%= @company.overview %></td>
+          </tr>
+          <tr>
+            <th>仕事依頼数</th>
+            <td><%= @jobs.count %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="text-center">
+      <%= link_to '会社情報の編集', edit_companies_company_path, class: "btn btn-success" %>&emsp;&emsp;&emsp;&emsp;
+      <%= link_to '仕事一覧', companies_company_jobs_path(@company), class: 'btn btn-success' %>
+    </div>
+<!--予約一覧s-->

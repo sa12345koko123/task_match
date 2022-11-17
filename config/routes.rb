@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     }
 
     resources :companies, only:[:show, :edit, :update] do
+      resources :blogs, only:[:new, :index, :create, :show, :destroy]
       resources :jobs
     end
   end
@@ -31,8 +32,8 @@ Rails.application.routes.draw do
       # get 'orders/complete' => 'orders#complete'
 
     end
-    get 'users/unsubscribe' => 'users#unsubscribe'
-    patch 'users/withdrawal' => 'users#withdrawal'
+    get 'users/:id/unsubscribe' => 'users#unsubscribe'
+    patch 'users/:id/withdrawal' => 'users#withdrawal'
     resources :companies, only:[:index, :show]
     resources :jobs, only:[:index, :show] do
       resources :comments, only: [:create, :destroy]

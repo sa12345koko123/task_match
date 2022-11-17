@@ -32,6 +32,14 @@
 　　　　　　　<i class="fas fa-sign-out-alt"></i>&nbsp;会社TOP
             <% end %>
           </div>
+
+          <div class="ml-1">
+            <%= link_to companies_company_blogs_path(current_companies_company), class: 'btn btn-danger' do %>
+　　　　　　　<i class="fas fa-sign-out-alt"></i>&nbsp;会社予定表
+            <% end %>
+          </div>
+
+
           <div class="ml-1">
             <%= link_to destroy_companies_company_session_path, method: :delete, class: 'btn btn btn-light btn-block text-dark' do %>
               <i class="fas fa-sign-out-alt"></i>&nbsp;会社ログアウト

@@ -7,18 +7,13 @@
 <%= @job.description %>
 
 <% if @job.job_status == true %>
-<p>受付中</p>
+<p class="text-success ">受付中</p>
+　<%= form_with url: user_orders_path(current_user), method: :get, local: true do |f| %>
+    <%= f.hidden_field :job_id, value: params[:id] %>
+    <%= f.submit '予約情報を入力する', class: "btn btn-success" %>
+  <% end %>
 <% else %>
-<p>締切中</p>
-<% end %>
-
-
-
-<%#= link_to '日程選択へ', orders_path %>
-
-<%= form_with url: user_orders_path(current_user), method: :get, local: true do |f| %>
-  <%= f.hidden_field :job_id, value: params[:id] %>
-  <%= f.submit '予約情報を入力する', class: "btn btn-success" %>
+<p class="text-secondary ">締切中</p>
 <% end %>
 
 
@@ -34,6 +29,9 @@
   <tr>
     <td><%= comment.user.name_family %></td>
     <td><%= comment.comment_content %></td>
+
+  <% if comment.user == current_user %>
     <td><%= link_to "削除", job_comment_path(@job, comment), method: :delete %></td>
-      </tr>
-    <% end %>
+  <% end %>
+  </tr>
+<% end %>
