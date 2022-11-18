@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     get 'users/:id/unsubscribe' => 'users#unsubscribe'
     patch 'users/:id/withdrawal' => 'users#withdrawal'
     resources :companies, only:[:index, :show]
+    get "news/data"
     resources :jobs, only:[:index, :show] do
       resources :comments, only: [:create, :destroy]
     end
