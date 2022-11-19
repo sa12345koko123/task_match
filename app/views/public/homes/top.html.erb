@@ -1,9 +1,60 @@
-<h1>Task-Match</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="mt-2 p-2 text-center bg-secondary text-white">Task-Match</h3>
+    </div>
+  </div>
 
 
-<%= link_to '会社一覧', companies_path %>
-<%= link_to '仕事依頼一覧', jobs_path %>
+  <!--<div class="row">-->
+  <!--  <div class="col-md-12 mt-5">-->
+  <!--    <div class="panel-group" id="accordion">-->
+  <!--      <div class="panel panel-default">-->
+  <!--        <div class="panel-heading">-->
+  <!--          <h5 class="panel-title text-center">-->
+  <!--            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">今日のニュース</a>-->
+  <!--          </h5>-->
+  <!--        </div>-->
+  <!--        <div id="collapse3" class="panel-collapse collapse in">-->
+  <!--          <div class="panel-body">-->
+  <!--            <hr>-->
+  <!--            <div id="result">no information...</div>-->
+  <!--              <script>-->
+  <!--                var f = function(){-->
+  <!--                  $.ajax({-->
+  <!--                    type: 'GET',-->
+  <!--                    url: '/news/data'-->
+  <!--                  });-->
+  <!--                };-->
+  <!--                f();-->
+  <!--              </script>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
 
-<%= link_to 'ログイン', new_user_session_path %>
+  <div class="row">
+    <div class="col-sm-4 text-center">
+      <button class="button"><%= link_to '会社一覧', companies_path, class:"text-dark" %></button>
+    </div>
+    <div class="col-sm-4 text-center">
+      <button class="button"><%= link_to 'ログイン', new_user_session_path, class:"text-dark" %></button>
+    </div>
+    <div class="col-sm-4 text-center">
+      <button class="button"><%= link_to '仕事依頼一覧', jobs_path, class:"text-dark" %></button>
+    </div>
+  </div>
 
-<%= link_to '会社管理者の方はこちら', new_companies_company_session_path %>
+
+    <div class="row">
+      <div class="col-md-12 text-center mt-2">
+      <button class="button"><%= link_to '会社管理者の方はこちら', new_companies_company_session_path, class:"text-dark" %></button>
+    </div>
+  </div>
+</div>
+
+
+

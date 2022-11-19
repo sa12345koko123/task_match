@@ -5,7 +5,6 @@
     </div>
     <div class="col-12 mt-3 content">
       <%= form_with model: @order, url: user_orders_path(current_user, job: @job), local: true, class: 'form' do |f| %>
-      <%#= render 'layouts/error_messages', model: form.object %>
 
       <div class="day form-group">
         <%= f.label :day, '日付' %>
@@ -17,18 +16,17 @@
         <%= f.text_field :time, class: 'form-control', value: @time, readonly: true %>
       </div>
 
-　　　<%#= f.hidden_field :job_id, value: @job_id %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :start_time, value: @start_time %>
+　　　  <%#= f.hidden_field :job_id, value: @job_id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :start_time, value: @start_time %>
 
       <div class="submit">
         <%= f.submit value: '予約する', class: 'btn btn-primary mx-auto d-block' %>
       </div>
-    <% end %>
-
+      <% end %>
+    </div>
     <div class="col-12 text-right">
       <%= link_to '戻る', user_orders_path(current_user) %>
-    </div>
     </div>
   </div>
 </div>

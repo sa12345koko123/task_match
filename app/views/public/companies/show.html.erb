@@ -1,14 +1,65 @@
-<h2>会社名:<%= @company.company_name %>様</h2>
+<div class="container">
+  <div class="row">
+    <h4 class="col-md-12 mt-2 text-center bg-secondary text-white">会社詳細</h4>
+  </div>
+  <div class="row">
+    <div class="col-md-5 text-center mt-2">
+      image
+    </div>
+    <div class="col-md-7 mt-2">
+      <div>
+        <label><strong>会社名：</strong></label>
+        <p style="display:inline;"><<%= @company.company_name %></p>
+      </div>
 
-<p><%= @company.address %></p>
+      <div class="mt-2">
+        <label><strong>住所：</strong></label>
+        <p style="display:inline;"><%= @company.address %></p>
+      </div>
+      <div class="mt-2">
+        <label><strong>お問い合わせ電話番号：</strong></label>
+        <p style="display:inline;"><%= @company.phone_number %></p>
+      </div>
 
-<p><%= @company.phone_number %></p>
+      <div class="mt-2">
+        <label><strong>依頼数：</strong></label>
+        <p style="display:inline;"><%= @jobs.count %></p>
+      </div>
 
-<p><%= @company.home_page %></p>
+      <div class="mt-2">
+        <label><strong>ホームページURL：</strong></label>
+        <p style="display:inline;"><%= @company.home_page %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mt-5 ml-5">
+      <div>
+        <label><strong>概要:</strong></label>
+        <p style="display:inline;"><%= @company.overview %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center mt-5">
+      <%= link_to '仕事依頼一覧', jobs_path, class: "btn btn-success" %>
+　　　<%= link_to '仕事一覧に戻る', companies_path, class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
 
-<p><%= @company.overview %></p>
 
-<p>仕事数：<%= @jobs.count %></p>
 
-<%= link_to '仕事依頼一覧', jobs_path %>
-<%= link_to '仕事一覧に戻る', companies_path %>
+
+
+
+
+
+
+
+
+
+
+
+
+

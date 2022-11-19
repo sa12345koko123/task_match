@@ -3,6 +3,11 @@ class Companies::CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
     @jobs = Job.where(company_id: @company.id)
+    # @orders = Order.all
+
+    # @orders = @user.orders
+    # @orders = @job.orders
+
   end
 
   def edit

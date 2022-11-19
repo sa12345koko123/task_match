@@ -1,14 +1,43 @@
-<h2>会社情報編集</h2>
+<div class="container">
+  <h4 class="mt-2 p-2 text-center bg-secondary text-white">会社名:<%= @company.company_name %>様</h4>
+  <div class="row">
+    <div class="col-md-8 offset-md-2 mt-4">
+    <%= form_with model: @company, url: companies_company_path, method: :patch do |f| %>
+      <table class="table table-borderless h6">
+        <tr>
+          <td></td>
+          <td><%= f.hidden_field :email %></td>
+        </tr>
+        <tr>
+          <td>会社画像</td>
+          <td>イメージ</td>
+        </tr>
+        <tr>
+          <td>会社名</td>
+          <td><%= f.text_field :company_name, placeholder:"商品名" , class: "form-control" %></td>
+        </tr>
 
-<%= form_with model: @company, url: companies_company_path, method: :patch do |f| %>
-
-<%= f.text_field :company_name %>
-<%= f.email_field :email %>
-<%= f.text_field :address %>
-<%= f.text_field :phone_number %>
-<%= f.text_field :overview %>
-<%= f.text_field :home_page %>
-
-<%= f.submit "登録", class: "btn btn-primary" %>
-
-<% end %>
+        <tr>
+        　<td>住所</td>
+          <td><%= f.text_field :address, placeholder:"会社の住所をご記入ください" , class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= f.text_field :phone_number, placeholder:"会社の電話番号をご記入ください" , class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td>ホームページ</td>
+          <td><%= f.text_field :home_page, placeholder:"会社のホームページURLをご記入ください" , class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td>概要</td>
+          <td><%= f.text_area :overview, size: "50x10", placeholder:"ここに会社の説明文を記述します" , class: "form-control" %></td>
+        </tr>
+      </table>
+      <div class="col-md-12 text-center">
+        <%= f.submit '変更を更新する', class: "btn btn-success" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

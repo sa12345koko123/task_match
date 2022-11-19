@@ -9,7 +9,7 @@
         <label><strong>依頼タイトル：</strong></label>
         <p style="display:inline;"><%= @job.title %></p>
       </div>
-      
+
       <div>
         <label><strong>日付：</strong></label>
         <p style="display:inline;"><%= @order.day %></p>
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="col-12 text-right">
-      <%= link_to '予約画面に戻る', jobs_path %>
+      <%= link_to 'マイページへ', user_path(current_user, @order.id) %>
     </div>
   </div>
 </div>

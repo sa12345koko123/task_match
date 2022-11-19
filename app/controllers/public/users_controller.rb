@@ -2,15 +2,17 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @orders = current_user.orders.where("day >= ?", Date.current).order(day: :desc)
-    # byebug
+    # 予約履歴の表示
+    @orders = current_user.orders
+    # @orders = current_user.orders.where("day >= ?", Date.current).order(day: :desc)
+    #byebug
     # @user_orders = current_user.orders.where("start_time >= ?", DateTime.current).order(day: :desc)
   end
 
   def update
     @user = current_user
 	  if @user.update(user_params)
-		   redirect_to  users_my_page_path(current_user)
+		   redirect_to  user_path(current_user)
 	  else
 			render :edit
 	  end
