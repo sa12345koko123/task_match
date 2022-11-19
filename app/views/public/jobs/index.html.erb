@@ -1,32 +1,40 @@
 <div class="container">
-  <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-12">仕事依頼一覧</h4>
-
-  <table class="table">
-    <thead class="thead-light">
-      <th  scope="col" style="width: 5%">依頼ID</th>
-      <th  scope="col" style="width: 5%">依頼名</th>
-      <th scope="col" style="width: 5%">単価格</th>
-      <th scope="col" style="width: 5%">ステータス</th>
-    </thead>
-    <tbody>
-    <% @jobs.each do |job| %>
-      <tr>
-        <td><%= job.id %></td>
-        <td>
-          <%= link_to job_path(job) do %>
-            <%= job.title %>
-          <% end %>
-        </td>
-        <td><%= job.unit_price %></td>
-        <td>
-          <% if job.job_status == true %>
-            <p class="text-success ">受付中</p>
-          <% else %>
-            <p class="text-secondary ">締切中</p>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <div class="row">
+    <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-12">仕事依頼一覧</h4>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead class="thead-light">
+        <th  scope="col" style="width: 5%">依頼ID</th>
+        <th  scope="col" style="width: 5%">依頼名</th>
+        <th scope="col" style="width: 5%">単価格</th>
+        <th scope="col" style="width: 5%">ステータス</th>
+      </thead>
+      <tbody>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td><%= job.id %></td>
+          <td>
+            <%= link_to job_path(job) do %>
+              <%= job.title %>
+            <% end %>
+          </td>
+          <td><%= job.unit_price %></td>
+          <td>
+            <% if job.job_status == true %>
+              <p class="text-success ">受付中</p>
+            <% else %>
+              <p class="text-secondary ">締切中</p>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-right mt-3">
+      <%= link_to 'ホーム画面へ', root_path, class: "btn btn-success" %>
+    </div>
+  </div>
 </div>

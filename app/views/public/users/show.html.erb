@@ -1,9 +1,9 @@
 <div class="container">
 	<div class="row">
   <table class="table table-striped">
-		<h2>登録情報</h2>
-		 <p><%= link_to '編集する',edit_user_path(current_user.id) %></p>
-		 <p><%= link_to 'ホームに戻る', root_path %></p>
+		<h2>登録情報</h2>&nbsp;&nbsp;&nbsp;
+		 <p><%= link_to '編集する',edit_user_path(current_user.id), class: "btn btn-success" %></p>&nbsp;&nbsp;&nbsp;
+		 <p><%= link_to 'ホームに戻る', root_path, class: "btn btn-success" %></p>
 
 		<tr>
 			<th>氏名</th>
