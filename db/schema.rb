@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_16_090936) do
+ActiveRecord::Schema.define(version: 2022_11_21_154913) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 2022_11_16_090936) do
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
+  create_table "job_tags", force: :cascade do |t|
+    t.integer "job_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.integer "company_id", null: false
     t.string "title", null: false
@@ -74,6 +81,12 @@ ActiveRecord::Schema.define(version: 2022_11_16_090936) do
     t.date "day"
     t.string "time"
     t.datetime "start_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

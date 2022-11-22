@@ -7,20 +7,31 @@ Rails.application.routes.draw do
       registrations: 'companies/registrations'
     }
 
+
     resources :companies, only:[:show, :edit, :update] do
       resources :blogs, only:[:new, :index, :create, :show, :destroy]
       resources :jobs
     end
+      resources :tags do
+        get 'jobs', to: 'jobs#search_tag'
+    end
   end
+
+  post 'companies/companies/guest_sign_in', to: 'companies/companies#guest_sign_in'
+
 
 
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
-    passwords: 'users/passwords',
-    confirmations: 'users/confirmations'
+    # passwords: 'users/passwords',
+    # confirmations: 'users/confirmations'
     }
+
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
 
   scope module: :public do
     root to: "homes#top"
@@ -30,12 +41,14 @@ Rails.application.routes.draw do
       resources :orders, only:[:index, :show, :new, :create, :destroy]
       # get 'orders/confirm/' => 'orders#confirm'
       # get 'orders/complete' => 'orders#complete'
-
     end
     get 'users/:id/unsubscribe' => 'users#unsubscribe'
     patch 'users/:id/withdrawal' => 'users#withdrawal'
     resources :companies, only:[:index, :show]
     get "news/data"
+    resources :tags do
+        get 'jobs', to: 'jobs#search_tag'
+    end
     resources :jobs, only:[:index, :show] do
       resources :comments, only: [:create, :destroy]
     end
@@ -51,8 +64,9 @@ Rails.application.routes.draw do
     }
 
     get "admins" => "homes#top"
+    patch 'users/:id/withdrawal' => 'users#withdrawal'
     resources :users, only:[:index, :show, :update]
-    resources :companies, only:[:index]
+    resources :companies, only:[:index, :show]
   end
 
 

@@ -33,13 +33,13 @@
     </table>
   </div>
   <div class="row">
-    <div class="col-md-12 text-right mt-3">
-      <%= link_to 'ホーム画面へ', root_path, class: "btn btn-secondary" %>
+    <div class="col-md-12 text-center mt-4">
+      <%= link_to '仕事依頼全てを表示する', jobs_path, class: "btn btn-secondary" %>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12 mt-4 text-center">
-      <h4>タグリスト</h4>
+    <div class="col-md-12 mt-5 text-center">
+      <h4> タグリスト</h4>
       <% @tag_list.each do |tag| %>
         <%= link_to tag.tag_name, tag_jobs_path(tag_id: tag.id) %>
         <%= "(#{tag.jobs.count})" %>

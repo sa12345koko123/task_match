@@ -1,4 +1,16 @@
-<h1>管理者画面</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="mt-2 p-2 text-center bg-secondary text-white">管理者用画面</h3>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-4 text-center">
+          <button class="button"><%= link_to '会社一覧', admins_companies_path, class:"text-dark" %>(<%= Company.all.count %>)</button>
+      </div>
+      <div class="col-md-4 offset-md-4 text-center">
+          <button class="button"><%= link_to '会員一覧', admins_users_path, class:"text-dark" %>(<%= User.all.count %>)</button>
+      </div>
+  </div>
+</div>
 
-<!--< link_to '会員一覧', master_users_path %>(<= User.all.count %>)</li>-->
-<%= link_to '店舗一覧', admins_companies_path %>(<%= Company.all.count %>)

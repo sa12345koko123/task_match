@@ -3,12 +3,13 @@ class Companies::CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
     @jobs = Job.where(company_id: @company.id)
-    # @orders = Order.all
+    @orders = Order.all
 
     # @orders = @user.orders
     # @orders = @job.orders
 
   end
+
 
   def edit
     @company = Company.find(params[:id])
@@ -23,6 +24,13 @@ class Companies::CompaniesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def guest_sign_in
+    # binding.pry
+    company = Company.guest
+    sign_in company
+    redirect_to companies_company_path(company), notice: 'guestcompanyでログインしました。'
   end
 
 

@@ -6,35 +6,35 @@
   </div>
 
 
-  <!--<div class="row">-->
-  <!--  <div class="col-md-12 mt-5">-->
-  <!--    <div class="panel-group" id="accordion">-->
-  <!--      <div class="panel panel-default">-->
-  <!--        <div class="panel-heading">-->
-  <!--          <h5 class="panel-title text-center">-->
-  <!--            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">今日のニュース</a>-->
-  <!--          </h5>-->
-  <!--        </div>-->
-  <!--        <div id="collapse3" class="panel-collapse collapse in">-->
-  <!--          <div class="panel-body">-->
-  <!--            <hr>-->
-  <!--            <div id="result">no information...</div>-->
-  <!--              <script>-->
-  <!--                var f = function(){-->
-  <!--                  $.ajax({-->
-  <!--                    type: 'GET',-->
-  <!--                    url: '/news/data'-->
-  <!--                  });-->
-  <!--                };-->
-  <!--                f();-->
-  <!--              </script>-->
-  <!--            </div>-->
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--</div>-->
+  <div class="row">
+    <div class="col-md-12 mt-5">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h5 class="panel-title text-center">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">今日のニュース</a>
+            </h5>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <hr>
+              <div id="result">no information...</div>
+                <script>
+                  var f = function(){
+                    $.ajax({
+                      type: 'GET',
+                      url: '/news/data'
+                    });
+                  };
+                  f();
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-sm-4 text-center">
@@ -49,9 +49,17 @@
   </div>
 
 
-    <div class="row">
-      <div class="col-md-12 text-center mt-2">
+  <div class="row">
+    <div class="col-md-12 text-center mt-2">
       <button class="button"><%= link_to '会社管理者の方はこちら', new_companies_company_session_path, class:"text-dark" %></button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 text-center mt-2">
+      <button class="button"><%= link_to 'ゲストログイン（顧客側閲覧用）', users_guest_sign_in_path, class:"text-dark", method: :post %></button>
+    </div>
+    <div class="col-md-6 text-center mt-2">
+      <button class="button"><%= link_to 'ゲストログイン（会社側閲覧用）', companies_companies_guest_sign_in_path, class:"text-dark", method: :post %></button>
     </div>
   </div>
 </div>

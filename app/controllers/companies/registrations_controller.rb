@@ -39,7 +39,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # end
 
   def after_sign_up_path_for(resource)
-    companies_company_path(resource)
+     edit_companies_company_path(resource)
   end
 
   def after_update_path_for(resource)

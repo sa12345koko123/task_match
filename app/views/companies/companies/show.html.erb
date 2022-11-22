@@ -34,6 +34,40 @@
     </div>
     <div class="text-center">
       <%= link_to '会社情報の編集', edit_companies_company_path, class: "btn btn-success" %>&emsp;&emsp;&emsp;&emsp;
-      <%= link_to '仕事一覧', companies_company_jobs_path(@company), class: 'btn btn-success' %>
+      <%= link_to '仕事一覧', companies_company_jobs_path(@company), class: 'btn btn-secondary' %>
     </div>
 <!--予約一覧s-->
+
+    <div class="col-12 mt-5 text-center mx-auto">
+      <h3>予約一覧</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ご予約様</th>
+          	  <th>依頼タイトル</th>
+              <th>予約日</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.user.full_name %></td>
+              <td><%= link_to job_path(order.job.id) do %>
+          	        <%= order.job.title %>
+          	      <% end %>
+          	  </td>
+              <td>
+                <%= order.day %>
+                <%= order.time %>
+              </td>
+            </tr>
+          <% end %>
+          <% if @orders.blank? %>
+          <tr>
+            <td>予約はありません。</td>
+          </tr>
+          <% end %>
+          </tbody>
+        </table>
+    </div>
+</div>

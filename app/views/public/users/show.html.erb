@@ -7,14 +7,12 @@
 
 		<tr>
 			<th>氏名</th>
-			<td><%= @user.name_family %>
-				<%= @user.name_first %>
+			<td><%= @user.full_name %>
 			</td>
 		</tr>
 		<tr>
 			<th>カナ</th>
-			<td><%= @user.name_family_kana %>
-				<%= @user.name_first_kana %>
+			<td><%= @user.kana_full_name %>
 			</td>
 		</tr>
 		<tr>
@@ -57,18 +55,19 @@
         </thead>
         <tbody>
         <% @orders.each do |order| %>
-          <td><%= link_to job_path(order.job.id) do %>
+          <tr><
+            <td><%= link_to job_path(order.job.id) do %>
           	    <%= order.job.title %>
           	  <% end %>
           	</td>
-          <td>
-            <%= order.day %>
-            <%= order.time %>
-          </td>
-          <td>
-            <%= link_to '削除', user_order_path(current_user, order.id), method: :delete, data: { confirm: "削除してよろしいですか？", commit: "削除する", cancel: "やめる", title: "ご確認ください" } %>
-          </td>
-          </tr>
+            <td>
+              <%= order.day %>
+              <%= order.time %>
+            </td>
+            <td>
+              <%= link_to '削除', user_order_path(current_user, order.id), method: :delete, data: { confirm: "削除してよろしいですか？", commit: "削除する", cancel: "やめる", title: "ご確認ください" } %>
+            </td>
+         </tr>
         <% end %>
         <% if @orders.blank? %>
           <tr>

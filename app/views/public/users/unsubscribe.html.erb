@@ -8,7 +8,7 @@
       <div class="d-flex justify-content-center">
         <span><%= link_to '退会しない', user_path(current_user) , class: "btn btn-primary" %></span>
         <span>&emsp;</span>
-        <span><%= link_to "退会する",  "/users/#{@user.id}/unsubscribe", method: :patch , class: "btn btn-danger" %></span>
+        <span><%= link_to "退会する",  "/users/#{@user.id}/withdrawal", method: :patch , class: "btn btn-danger" %></span>
       </div>
     </div>
   </div>

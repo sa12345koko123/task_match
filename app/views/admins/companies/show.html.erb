@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h4 class="col-md-12 mt-2 text-center bg-secondary text-white">会社詳細</h4>
+    <h4 class="col-md-12 mt-2 text-center bg-secondary text-white">会社詳細（管理者用）</h4>
   </div>
   <div class="row">
     <div class="col-md-5 text-center mt-2">
@@ -9,7 +9,7 @@
     <div class="col-md-7 mt-2">
       <div>
         <label><strong>会社名：</strong></label>
-        <p style="display:inline;"><%= @company.company_name %></p>
+        <p style="display:inline;"><<%= @company.company_name %></p>
       </div>
 
       <div class="mt-2">
@@ -42,24 +42,7 @@
   </div>
   <div class="row">
     <div class="col-md-12 text-center mt-5">
-      <%= link_to '仕事依頼一覧', jobs_path, class: "btn btn-success" %>
-　　　<%= link_to '仕事一覧に戻る', companies_path, class: "btn btn-success" %>
+　　　<%= link_to '仕事一覧に戻る', admins_companies_path, class: "btn btn-success" %>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -31,10 +31,24 @@
         </table>
       </div>
     </div>
-    <div class="text-center">
-      <%= link_to '編集', edit_companies_company_job_path(@company, @job), class: "btn btn-success" %>&emsp;&emsp;&emsp;&emsp;
-      <%= link_to '削除', "/companies/companies/#{@company.id}/jobs/#{@job.id}", method: :delete, class: 'btn btn-danger' %>
+
+    <div class="row">
+      <div class="col-md-12 text-center mt-4">
+        <% @job_tags.each do |tag| %>
+          <%= link_to tag.tag_name, companies_tag_jobs_path(tag_id: tag.id) %>
+        <% end %>
+      </div>
     </div>
+
+
+    <div class="row">
+      <div class="col-md-12 mt-4 text-center">
+        <%= link_to '編集', edit_companies_company_job_path(@company, @job), class: "btn btn-success" %>&emsp;&emsp;&emsp;&emsp;
+        <%= link_to '削除', "/companies/companies/#{@company.id}/jobs/#{@job.id}", method: :delete, class: 'btn btn-danger' %>
+      </div>
+    </div>
+
+
 
     <div class="row">
       <div class="col-md-12 mt-5">

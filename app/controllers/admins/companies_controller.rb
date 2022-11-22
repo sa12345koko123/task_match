@@ -5,6 +5,11 @@ class Admins::CompaniesController < ApplicationController
     @jobs = Job.all
   end
 
+  def show
+    @company = Company.find(params[:id])
+    @jobs = @company.jobs
+  end
+
 
   private
   def company_params

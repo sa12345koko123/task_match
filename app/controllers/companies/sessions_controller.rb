@@ -2,8 +2,8 @@
 
 class Companies::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-
   # GET /resource/sign_in
+
   # def new
   #   super
   # end
@@ -19,12 +19,13 @@ class Companies::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    companies_company_path(resource)
+     edit_companies_company_path(resource)
   end
 
   def after_sing_out_path_for(resource)
      new_companies_company_session_path
   end
+
 
   # protected
 

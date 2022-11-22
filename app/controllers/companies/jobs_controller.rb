@@ -7,9 +7,12 @@ class Companies::JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-    # binding.pry
+
     @job.company_id = current_companies_company.id
+    tag_list = params[:job][:tag_name].split(',')
     if @job.save
+      # binding.pry
+      @job.save_tag(tag_list)
       flash[:notice] = '仕事を追加しました'
       redirect_to companies_company_jobs_path
     else
@@ -25,12 +28,14 @@ class Companies::JobsController < ApplicationController
     # logger.debug '=============================================================='
     @company = Company.find(params[:company_id])
     @jobs = @company.jobs
+    @tag_list = Tag.all
   end
 
   def show
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @comments = @job.comments
+    @job_tags = @job.tags
   end
 
   def edit
@@ -54,6 +59,14 @@ class Companies::JobsController < ApplicationController
     job.destroy
     @company =Company.find(params[:company_id])
     redirect_to companies_company_jobs_path(@company)
+  end
+
+
+  def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @company = Company.find_by(params[:company_id])
+    @jobs = @tag.jobs.all
   end
 
   private

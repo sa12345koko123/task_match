@@ -32,12 +32,12 @@
   </table>
   <div class="row">
     <div class="col-md-12 text-center">
-      <%= link_to '仕事の依頼を追加', new_companies_company_job_path %>
+      <%= link_to '仕事を全て表示する', companies_company_jobs_path(@company) %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12 mt-5 text-center">
-      <h3>タグリスト</h3>
+      <h3>#タグリスト</h3>
         <% @tag_list.each do |tag| %>
           <%= link_to tag.tag_name, companies_tag_jobs_path(tag_id: tag.id) %>
           <%= "(#{tag.jobs.count})" %>
@@ -45,4 +45,3 @@
     </div>
   </div>
 </div>
-
