@@ -36,32 +36,51 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-4 text-center">
-      <button class="button"><%= link_to '会社一覧', companies_path, class:"text-dark" %></button>
+  <% if user_signed_in? %>
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <button class="button"><%= link_to '会社一覧', companies_path, class:"text-dark" %></button>
+      </div>
+      <div class="col-md-6 text-center">
+        <button class="button"><%= link_to '仕事依頼一覧', jobs_path, class:"text-dark" %></button>
+      </div>
     </div>
-    <div class="col-sm-4 text-center">
-      <button class="button"><%= link_to 'ログイン', new_user_session_path, class:"text-dark" %></button>
+  <% elsif companies_company_signed_in? %>
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <button class="button"><%= link_to '会社一覧', companies_path, class:"text-dark" %></button>
+      </div>
+      <div class="col-md-6 text-center">
+        <button class="button"><%= link_to '仕事依頼一覧', jobs_path, class:"text-dark" %></button>
+      </div>
     </div>
-    <div class="col-sm-4 text-center">
-      <button class="button"><%= link_to '仕事依頼一覧', jobs_path, class:"text-dark" %></button>
+  <% else %>
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <button class="button"><%= link_to '会社一覧', companies_path, class:"text-dark" %></button>
+      </div>
+      <div class="col-md-4 text-center">
+        <button class="button"><%= link_to 'ログイン', new_user_session_path, class:"text-dark" %></button>
+      </div>
+      <div class="col-md-4 text-center">
+        <button class="button"><%= link_to '仕事依頼一覧', jobs_path, class:"text-dark" %></button>
+      </div>
     </div>
-  </div>
 
-
-  <div class="row">
-    <div class="col-md-12 text-center mt-2">
-      <button class="button"><%= link_to '会社管理者の方はこちら', new_companies_company_session_path, class:"text-dark" %></button>
+    <div class="row">
+      <div class="col-md-12 text-center mt-2">
+        <button class="button"><%= link_to '会社管理者の方はこちら', new_companies_company_session_path, class:"text-dark" %></button>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 text-center mt-2">
-      <button class="button"><%= link_to 'ゲストログイン（顧客側閲覧用）', users_guest_sign_in_path, class:"text-dark", method: :post %></button>
+    <div class="row">
+      <div class="col-md-6 text-center mt-2">
+        <button class="button"><%= link_to 'ゲストログイン（顧客側閲覧用）', users_guest_sign_in_path, class:"text-dark", method: :post %></button>
+      </div>
+      <div class="col-md-6 text-center mt-2">
+        <button class="button"><%= link_to 'ゲストログイン（会社側閲覧用）', companies_companies_guest_sign_in_path, class:"text-dark", method: :post %></button>
+      </div>
     </div>
-    <div class="col-md-6 text-center mt-2">
-      <button class="button"><%= link_to 'ゲストログイン（会社側閲覧用）', companies_companies_guest_sign_in_path, class:"text-dark", method: :post %></button>
-    </div>
-  </div>
+  <% end %>
 </div>
 
 

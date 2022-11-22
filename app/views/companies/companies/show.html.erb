@@ -2,41 +2,42 @@
   <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-12">会社名:<%= @company.company_name %>様</h4>
     <div class="row">
       <div class="col-md-5 mt-5 text-center">
-          イメージ
+        <%= image_tag @company.get_company_image(200,100) %>
       </div>
       <div class="col-md-7 mt-5">
         <table class="table table-borderless h4">
           <tr>
-            <th>会社住所</th>
+            <th>会社住所:</th>
             <td><%= @company.address %></td>
           </tr>
 
           <tr>
-            <th>会社電話番号</th>
+            <th>会社電話番号:</th>
             <td><%= @company.phone_number %></td>
           </tr>
 
           <tr>
-            <th>ホームページURL</th>
+            <th>ホームページURL:</th>
             <td><%= @company.home_page %></td>
           </tr>
 
           <tr>
-            <th>概要</th>
+            <th>概要:</th>
             <td><%= @company.overview %></td>
           </tr>
           <tr>
-            <th>仕事依頼数</th>
-            <td><%= @jobs.count %></td>
+            <th>仕事依頼数:</th>
+            <td><%= @jobs.count %>件</td>
           </tr>
         </table>
       </div>
     </div>
     <div class="text-center">
-      <%= link_to '会社情報の編集', edit_companies_company_path, class: "btn btn-success" %>&emsp;&emsp;&emsp;&emsp;
+      <% if @company.company_name != "guestcompany" %>
+        <%= link_to '会社情報の編集', edit_companies_company_path, class: "btn btn-success" %>&emsp;&emsp;&emsp;&emsp;
+      <% end %>
       <%= link_to '仕事一覧', companies_company_jobs_path(@company), class: 'btn btn-secondary' %>
     </div>
-<!--予約一覧s-->
 
     <div class="col-12 mt-5 text-center mx-auto">
       <h3>予約一覧</h3>
@@ -52,7 +53,7 @@
           <% @orders.each do |order| %>
             <tr>
               <td><%= order.user.full_name %></td>
-              <td><%= link_to job_path(order.job.id) do %>
+              <td><%= link_to companies_company_job_path(@company,@jobs.ids) do %>
           	        <%= order.job.title %>
           	      <% end %>
           	  </td>

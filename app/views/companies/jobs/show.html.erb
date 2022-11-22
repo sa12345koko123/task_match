@@ -4,22 +4,22 @@
       <div class="col-md-10 mt-5 text-center">
         <table class="table table-borderless h4">
           <tr>
-            <th>ご依頼タイトル</th>
+            <th>ご依頼タイトル:</th>
             <td><%= @job.title %></td>
           </tr>
 
           <tr>
-            <th>単価</th>
+            <th>単価:</th>
             <td><%= @job.unit_price %></td>
           </tr>
 
           <tr>
-            <th>ご依頼内容/説明</th>
+            <th>ご依頼内容/説明:</th>
             <td><%= @job.description %></td>
           </tr>
 
           <tr>
-            <th>ステータス</th>
+            <th>ステータス:</th>
             <td>
               <% if @job.job_status == true %>
                 <p class="text-success ">受付中</p>
@@ -35,7 +35,7 @@
     <div class="row">
       <div class="col-md-12 text-center mt-4">
         <% @job_tags.each do |tag| %>
-          <%= link_to tag.tag_name, companies_tag_jobs_path(tag_id: tag.id) %>
+          <i class="fas fa-solid fa-tags"></i><%= link_to tag.tag_name, companies_tag_jobs_path(tag_id: tag.id) %>
         <% end %>
       </div>
     </div>
@@ -48,6 +48,11 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-12 mt-4 text-right">
+        <%= link_to 'ご依頼一覧へ', companies_company_jobs_path(@company), class: 'btn btn-secondary' %>
+      </div>
+    </div>
 
 
     <div class="row">

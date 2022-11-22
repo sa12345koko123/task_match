@@ -1,22 +1,38 @@
-<h2>登録情報編集</h2>
-	<%= form_with model: @user, url: user_path(current_user), method: :patch, local: true do |f| %>
-			<%= f.hidden_field :family_name_kanji %>
-			<%= f.hidden_field :first_name_kanji %>
-			<%= f.hidden_field :family_name_kana %>
-			<%= f.hidden_field :first_name_kana %>
-			<%= f.hidden_field :email %>
-		<p>ニックネーム</p>
-		　<%= f.text_field :handle_name %>
-		<p>郵便番号</p>
-			<%= f.text_field :postal_code %>
-		<p>住所</p>
-			<%= f.text_field :address %>
-		<p>電話番号</p>
-			<%= f.text_field :phone_number %>
-
-		<p>プロフィール</p>
-		　<%= f.text_area :profile %>
-		<%= f.submit '編集内容を保存する' %>
-	<% end %>
-  <%= link_to '退会する' , "/users/#{@user.id}/unsubscribe" ,class: "btn btn-danger" %>
+<div class="container">
+  <h4 class="mt-2 p-2 text-center bg-secondary text-white">登録情報編集</h4>
+  <div class="row">
+    <div class="col-md-8 offset-md-2 mt-4">
+    <%= form_with model: @user, url: user_path(current_user), method: :patch, local: true do |f| %>
+      <table class="table table-borderless h6">
+        <tr>
+          <td>プロフィール画像</td>
+          <td> <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>  </td>
+        </tr>
+        <tr>
+          <td>ニックネーム</td>
+          <td><%= f.text_field :handle_name, placeholder:"ニックネーム", class: "form-control" %></td>
+        </tr>
+        <tr>
+        　<td>郵便番号</td>
+          <td><%= f.text_field :postal_code, placeholder:"郵便番号をご記入ください", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :address, placeholder:"住所をご記入ください", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= f.text_field :phone_number, placeholder:"電話番号をご記入ください", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td>アピールポイント</td>
+          <td><%= f.text_area :profile, size: "50x10", placeholder:"自己紹介などを記述します", class: "form-control" %></td>
+        </tr>
+      </table>
+      <div class="col-md-12 text-center">
+      <%= f.submit '編集内容を保存する', class: "btn btn-success" %>&emsp;&emsp;&emsp;&emsp;
+      <% end %>
+      <%= link_to '退会する' , "/users/#{@user.id}/unsubscribe" ,class: "btn btn-danger" %>
+    </div>
+  </div>
 </div>

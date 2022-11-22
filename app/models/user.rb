@@ -4,8 +4,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-   has_many :orders
-   has_many :comments, dependent: :destroy
+  has_many :orders
+  has_many :comments, dependent: :destroy
+  has_one_attached :profile_image
+
+
+
+
+  def get_profile_image(width, height)
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpeg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+
 
   def full_name
     self.name_family + " " + self.name_first
@@ -14,6 +27,11 @@ class User < ApplicationRecord
   def kana_full_name
     self.name_family_kana + " " + self.name_first_kana
   end
+
+
+
+
+
 
   def self.guest
     User.find_or_create_by!(name_family:'guestuser', name_first:'太郎', name_family_kana:'シサク', name_first_kana:'タロウ', email:'xxx@gmail.com', handle_name:'タロー', phone_number:'00000000000', address:'テスト県テスト市0000', postal_code:'0000000') do |user|

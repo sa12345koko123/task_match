@@ -3,7 +3,9 @@ class Companies::CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
     @jobs = Job.where(company_id: @company.id)
-    @orders = Order.all
+    # whereでorderに絞り込み会社に紐ずくjob.idをもってくる
+    @orders = Order.where(job_id: @company.jobs.ids)
+    # @orders = Order.all
 
     # @orders = @user.orders
     # @orders = @job.orders
@@ -38,7 +40,7 @@ class Companies::CompaniesController < ApplicationController
 
   private
   def company_params
-    params.require(:company).permit(:email, :company_name, :address, :phone_number, :home_page, :overview)
+    params.require(:company).permit(:company_image, :email, :company_name, :address, :phone_number, :home_page, :overview)
   end
 
 

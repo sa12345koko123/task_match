@@ -9,8 +9,8 @@
           <td><%= f.hidden_field :email %></td>
         </tr>
         <tr>
-          <td>会社画像</td>
-          <td>イメージ</td>
+          <td>会社プロフィール画像</td>
+          <td> <%= f.file_field :company_image, placeholder: "プロフィール画像", accept: "image/*" %>  </td>
         </tr>
         <tr>
           <td>会社名</td>

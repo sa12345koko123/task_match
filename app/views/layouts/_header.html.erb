@@ -14,12 +14,12 @@
 
         <% if admins_admin_signed_in? %>
           <div class="ml-3">
-            <% link_to admins_admins_path, class: 'btn btn btn-light btn-block text-dark' do %>
+            <% link_to admins_admins_path, class: 'btn btn-secondary btn-block text-white' do %>
               <i class="fas fa-user"></i>&nbsp;管理者TOP
             <% end %>
           </div>
           <div class="ml-1">
-            <%= link_to destroy_admins_admin_session_path, method: :delete,class: 'btn btn btn-light btn-block text-dark' do %>
+            <%= link_to destroy_admins_admin_session_path, method: :delete, class: 'btn btn btn-danger btn-block text-white' do %>
               <i class="fas fa-sign-out-alt"></i>&nbsp;ログアウト
             <% end %>
           </div>
@@ -28,20 +28,20 @@
 
         <%if companies_company_signed_in? %>
           <div class="ml-1">
-            <%= link_to companies_company_path(current_companies_company), class: 'btn btn-danger' do %>
+            <%= link_to companies_company_path(current_companies_company), class: 'btn btn-secondary btn-block text-white' do %>
 　　　　　　　<i class="fas fa-sign-out-alt"></i>&nbsp;会社TOP
             <% end %>
           </div>
 
           <div class="ml-1">
-            <%= link_to companies_company_blogs_path(current_companies_company), class: 'btn btn-danger' do %>
+            <%= link_to companies_company_blogs_path(current_companies_company), class: 'btn btn-primary btn-block text-white' do %>
 　　　　　　　<i class="fas fa-sign-out-alt"></i>&nbsp;会社予定表
             <% end %>
           </div>
 
 
           <div class="ml-1">
-            <%= link_to destroy_companies_company_session_path, method: :delete, class: 'btn btn btn-light btn-block text-dark' do %>
+            <%= link_to destroy_companies_company_session_path, method: :delete, class: 'btn btn btn-danger btn-block text-white' do %>
               <i class="fas fa-sign-out-alt"></i>&nbsp;会社ログアウト
             <% end %>
           </div>
@@ -50,19 +50,16 @@
 
         <% if user_signed_in? %>
           <div class="ml-1">
-            <%= link_to user_path(current_user), class: 'btn btn-danger' do %>
+            <%= link_to user_path(current_user), class: 'btn btn-primary btn-block text-white' do %>
 　　　　　　　<i class="fas fa-sign-out-alt"></i>&nbsp;マイページ
             <% end %>
           </div>
           <div class="ml-1">
-            <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn btn-light btn-block text-dark' do %>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn btn-danger btn-block text-white' do %>
               <i class="fas fa-sign-out-alt"></i>&nbsp;ログアウト
             <% end %>
           </div>
-
         <% end %>
-
-
         </ul>
       </div>
     </div>

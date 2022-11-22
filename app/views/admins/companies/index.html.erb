@@ -8,23 +8,25 @@
 　<div class="row">
 　  <table class="table">
 　    <thead class="thead-light">
-　      <th  scope="col" style="width: 5%">会社ID</th>
-　      <th  scope="col" style="width: 5%">会社名</th>
-　      <th  scope="col" style="width: 5%">登録日</th>
-　      <th  scope="col" style="width: 5%">電話番号</th>
-　      <th  scope="col" style="width: 5%">ご依頼仕事数</th>
+　      <th scope="col" style="width: 5%">会社ID</th>
+　      <th scope="col" style="width: 5%"></th>
+　      <th scope="col" style="width: 5%">会社名</th>
+　      <th scope="col" style="width: 5%">電話番号</th>
+　      <th scope="col" style="width: 5%">ご依頼仕事数</th>
+　      <th scope="col" style="width: 5%">登録日</th>
 　    </thead>
 　    <% @companies.each do |company| %>
 　    <tbody>
 　      <tr>
 　        <td><%= company.id %></td>
+　        <td><%= image_tag company.get_company_image(100,100) %></td>
 　        <td><%= link_to admins_company_path(company) do %>
 　              <%= company.company_name %>
 　            <% end %>
 　        </td>
-　        <td><%= company.created_at %></td>
 　        <td><%= company.phone_number %></td>
 　       <td><%= company.jobs.count %>件</td>
+　       <td><%= company.created_at %></td>
 　      </tr>
 　    </tbody>
 　    <% end %>

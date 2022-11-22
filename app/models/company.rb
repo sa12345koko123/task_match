@@ -6,6 +6,21 @@ class Company < ApplicationRecord
 
   has_many :jobs, dependent: :destroy
   has_many :blogs, dependent: :destroy
+  has_one_attached :company_image
+
+
+
+
+
+
+  def get_company_image(width, height)
+    unless company_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpeg')
+      company_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    company_image.variant(resize_to_limit: [width, height]).processed
+  end
+
 
   def self.guest
     Company.find_or_create_by!(email:'zzz@gmail.com', company_name:'guestcompany', address:'問題県問題市0000', phone_number:'0000000000') do |company|
