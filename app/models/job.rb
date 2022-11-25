@@ -1,10 +1,16 @@
 class Job < ApplicationRecord
 
+  is_impressionable
+
   belongs_to :company
-  has_many :orders
+  has_many :orders, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :job_tags, dependent: :destroy
   has_many :tags,through: :job_tags
+
+  validates :title, presence: true, length: { maximum:30 }
+  validates :description, presence: true
+  validates :unit_price, presence: true, numericality: { only_integer:true } ,length: { maximum:10 }
 
 
 

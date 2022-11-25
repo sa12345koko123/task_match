@@ -8,6 +8,10 @@ class Company < ApplicationRecord
   has_many :blogs, dependent: :destroy
   has_one_attached :company_image
 
+  validates :company_name, presence: true, length: { maximum:30 }, on: :update
+  validates :address, presence: true ,length: { maximum:161 }, on: :update
+  validates :phone_number, presence: true, numericality: { only_integer:true } ,length: { maximum:21 }, on: :update
+
 
 
 
@@ -23,7 +27,7 @@ class Company < ApplicationRecord
 
 
   def self.guest
-    Company.find_or_create_by!(email:'zzz@gmail.com', company_name:'guestcompany', address:'問題県問題市0000', phone_number:'0000000000') do |company|
+    Company.find_or_create_by!(email:'zzz@webcamp.', company_name:'guestcompany', address:'問題県問題市0000', phone_number:'0000000000') do |company|
       company.password = SecureRandom.urlsafe_base64
       company.company_name = "guestcompany"
     end

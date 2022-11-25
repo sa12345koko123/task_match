@@ -1,4 +1,5 @@
 class Public::CompaniesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @companies = Company.all

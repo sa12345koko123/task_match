@@ -59,17 +59,29 @@
 
 // カレンダーの表示のカスタム
 .simple-calendar {
-  .day {}
+  .day {
+   background: #FFFFFF	;
+  }
 
-  .wday-0 {}
+// 日曜日
+  .wday-0 {
+    background: #ffeaea;
+    color: #ff505c;
+  }
   .wday-1 {}
   .wday-2 {}
   .wday-3 {}
   .wday-4 {}
   .wday-5 {}
-  .wday-6 {}
+  // 土曜日
+  .wday-6 { background: #d4ebff;
+    color: #5984dc;
 
-  .today {}
+  }
+
+  .today {
+   background: #99FFCC	;
+  }
   .past {}
   .future {}
 
@@ -81,6 +93,10 @@
 
   .has-events {
   }
+}
+
+.calendar-table tr td:hover {
+  background-color: #FFFF8c;
 }
 
 

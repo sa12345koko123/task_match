@@ -66,6 +66,7 @@ gem 'kaminari','~> 1.2.1'
 gem "news-api"
 gem "jquery-rails"
 gem 'devise'
+gem 'impressionist'
 
 gem 'dotenv-rails'
 group :production do
@@ -75,3 +76,4 @@ end
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+

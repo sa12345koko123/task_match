@@ -1,4 +1,5 @@
 class Companies::CompaniesController < ApplicationController
+  # before_action :authenticate_companies_company!, except: [:index]
 
   def show
     @company = Company.find(params[:id])

@@ -28,9 +28,14 @@ module Public::OrdersHelper
         result = order[:day].eql?(day) && order[:time].eql?(time) && order[:job_id].eql?(job_id[:job_id])
         return result if result
       end
+
+   
+
     # elsif orders_count == 1
     #   result = orders[0][:day].eql?(day.strftime("%Y-%m-%d")) && orders[0][:time].eql?(time)
     #   return result if result
+    
+    
     end
     return result
   end

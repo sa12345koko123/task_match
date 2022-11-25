@@ -1,4 +1,7 @@
 class Public::JobsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
+  impressionist :actions => [:show]
 
   def index
     @jobs = Job.all
@@ -11,6 +14,7 @@ class Public::JobsController < ApplicationController
     @comment = Comment.new
     @comments = @job.comments
     @job_tags = @job.tags
+     impressionist(@job, nil, unique: [:session_hash.to_s])
   end
 
   def search_tag

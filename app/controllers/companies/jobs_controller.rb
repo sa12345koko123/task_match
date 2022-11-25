@@ -3,6 +3,7 @@ class Companies::JobsController < ApplicationController
 
   def new
     @job = Job.new
+    @company = Company.find(params[:company_id])
   end
 
   def create
@@ -16,7 +17,8 @@ class Companies::JobsController < ApplicationController
       flash[:notice] = '仕事を追加しました'
       redirect_to companies_company_jobs_path
     else
-      @Jobs = Job.all
+      @company = Company.find(params[:company_id])
+      # @Jobs = Job.all
       render :new
     end
   end
@@ -29,6 +31,7 @@ class Companies::JobsController < ApplicationController
     @company = Company.find(params[:company_id])
     @jobs = @company.jobs
     @tag_list = Tag.all
+
   end
 
   def show
@@ -50,6 +53,7 @@ class Companies::JobsController < ApplicationController
       @company =Company.find(params[:company_id])
       redirect_to companies_company_job_path(@company)
     else
+      @company =Company.find(params[:company_id])
       render :edit
     end
   end

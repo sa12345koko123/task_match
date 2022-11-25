@@ -41,6 +41,44 @@
     </div>
   </div>
   <div class="row">
+    <h4 class="mt-5 text-center col-md-12">仕事依頼一覧</h4>
+  </div>
+
+  <div class="row">
+    <table class="table">
+      <thead class="thead-light">
+        <th  scope="col" style="width: 5%">依頼ID</th>
+        <th  scope="col" style="width: 5%">依頼名</th>
+        <th scope="col" style="width: 5%">単価格</th>
+        <th scope="col" style="width: 5%">ステータス</th>
+      </thead>
+      <tbody>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td><%= job.id %></td>
+          <td>
+            <%= link_to job_path(job) do %>
+              <%= job.title %>
+            <% end %>
+          </td>
+          <td><%= job.unit_price %></td>
+          <td>
+            <% if job.job_status == true %>
+              <p class="text-success ">受付中</p>
+            <% else %>
+              <p class="text-secondary ">締切中</p>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+  <div class="row">
     <div class="col-md-12 text-center mt-5">
       <%= link_to '仕事依頼一覧', jobs_path, class: "btn btn-success" %>
 　　　<%= link_to '仕事一覧に戻る', companies_path, class: "btn btn-success" %>

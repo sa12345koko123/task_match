@@ -7,10 +7,8 @@
     <div class="col-md-8 offset-md-2 mt-4">
 　　  <%= render partial: 'form', locals: { job: @job } %>
 　　</div>
+　　<div class="col-md-12 text-center mt-3">
+      <%= link_to '仕事一覧', companies_company_jobs_path(@company), class: 'btn btn-secondary' %>
+    </div>
   </div>
 </div>
-
-
-<!--<else %>-->
-  <!--<p>権限がありません。</p>-->
-<!--< end %>-->
