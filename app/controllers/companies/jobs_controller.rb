@@ -32,6 +32,7 @@ class Companies::JobsController < ApplicationController
     @jobs = @company.jobs
     @tag_list = Tag.all
 
+
   end
 
   def show
@@ -39,6 +40,7 @@ class Companies::JobsController < ApplicationController
     @job = Job.find(params[:id])
     @comments = @job.comments
     @job_tags = @job.tags
+    @orders = @job.orders
   end
 
   def edit

@@ -1,169 +1,105 @@
 <div class="container">
   <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-12">ご依頼詳細</h4>
-    <div class="row">
-      <div class="col-md-10 mt-5 text-center">
-        <table class="table table-borderless h4">
-          <tr>
-            <th>ご依頼タイトル:</th>
-            <td><%= @job.title %></td>
-          </tr>
+  <div class="row">
+    <div class="col-md-10 mt-5 text-center">
+      <table class="table table-borderless h4">
+        <tr>
+          <th>ご依頼タイトル:</th>
+          <td><%= @job.title %></td>
+        </tr>
 
-          <tr>
-            <th>単価:</th>
-            <td><%= @job.unit_price %></td>
-          </tr>
+        <tr>
+          <th>単価:</th>
+          <td><%= @job.unit_price %></td>
+        </tr>
 
-          <tr>
-            <th>ご依頼内容/説明:</th>
-            <td><%= @job.description %></td>
-          </tr>
+        <tr>
+          <th>ご依頼内容/説明:</th>
+          <td><%= @job.description %></td>
+        </tr>
 
-          <tr>
-            <th>ステータス:</th>
-            <td>
-              <% if @job.job_status == true %>
-                <p class="text-success ">受付中</p>
-              <% else %>
-                <p class="text-secondary ">締切中</p>
-              <% end %>
-            </td>
-          </tr>
-        </table>
-      </div>
+        <tr>
+          <th>ステータス:</th>
+          <td>
+            <% if @job.job_status == true %>
+              <p class="text-success ">受付中</p>
+            <% else %>
+              <p class="text-secondary ">締切中</p>
+            <% end %>
+          </td>
+        </tr>
+      </table>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-md-12 text-center mt-4">
-        <i class="fa fa-solid fa-eye"></i>&nbsp;&nbsp;<%= @job.impressionist_count(:filter=>:session_hash) %>
-      </div>
+  <div class="row">
+    <div class="col-md-12 text-center mt-4">
+      <i class="fa fa-solid fa-eye"></i>&nbsp;&nbsp;<%= @job.impressionist_count(:filter=>:session_hash) %>
     </div>
+  </div>
 
 
-    <div class="row">
-      <div class="col-md-12 text-center mt-4">
-        <% @job_tags.each do |tag| %>
-          <i class="fas fa-solid fa-tags"></i><%= tag.tag_name %>
-        <% end %>
-      </div>
+  <div class="row">
+    <div class="col-md-12 text-center mt-4">
+      <% @job_tags.each do |tag| %>
+        <i class="fas fa-solid fa-tags"></i><%= tag.tag_name %>
+      <% end %>
     </div>
+  </div>
 
 
-    <div class="row">
-      <div class="col-md-12 mt-4 text-center">
-        <%= link_to '編集', edit_companies_company_job_path(@company, @job), class: "btn btn-success" %>&emsp;&emsp;&emsp;&emsp;
-        <%= link_to '削除', "/companies/companies/#{@company.id}/jobs/#{@job.id}", method: :delete, class: 'btn btn-danger' %>
-      </div>
+  <div class="row">
+    <div class="col-md-12 mt-4 text-center">
+      <%= link_to '編集', edit_companies_company_job_path(@company, @job), class: "btn btn-success" %>&emsp;&emsp;&emsp;&emsp;
+      <%= link_to '削除', "/companies/companies/#{@company.id}/jobs/#{@job.id}", method: :delete, class: 'btn btn-danger' %>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-md-12 mt-4 text-right">
-        <%= link_to 'ご依頼一覧へ', companies_company_jobs_path(@company), class: 'btn btn-secondary' %>
-      </div>
+  <div class="row">
+    <div class="col-md-12 mt-4 text-right">
+      <%= link_to 'ご依頼一覧へ', companies_company_jobs_path(@company), class: 'btn btn-secondary' %>
     </div>
+  </div>
 
 
-    <div class="row">
-      <div class="col-md-12 mt-5">
-        <div class="panel-group" id="accordion">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h5 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">質問を表示させる</a>
-              </h5>
-            </div>
-            <div id="collapse3" class="panel-collapse collapse in">
-              <div class="panel-body">
-                <table class="table">
-                  <thead class="thead-light">
-                    <th  scope="col" style="width: 25%">質問者名</th>
-                    <th  scope="col" style="width: 30%">内容</th>
-                    <th></th>
-                  </thead>
-                　<tbody>
-                　<% @comments.each do |comment| %>
-                　   <tr>
-                      <td><%= comment.user.name_family %></td>
-                      <td><%= comment.comment_content %></td>
-                      <% if user_signed_in? %>
-                        <td><%= link_to "削除", job_comment_path(@job, comment), method: :delete, class: 'btn btn-danger' %></td>
-                      <% end %>
-                    </tr>
-                  <% end %>
-                  </tbody>
-                </table>
-              </div>
+  <div class="row">
+    <div class="col-md-12 mt-5">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h5 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">質問を表示させる</a>
+            </h5>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <table class="table">
+                <thead class="thead-light">
+                  <th  scope="col" style="width: 25%">質問者名</th>
+                  <th  scope="col" style="width: 30%">内容</th>
+                  <th></th>
+                </thead>
+              　<tbody>
+              　<% @comments.each do |comment| %>
+              　   <tr>
+                    <td><%= comment.user.name_family %></td>
+                    <td><%= comment.comment_content %></td>
+                    <% if user_signed_in? %>
+                      <td><%= link_to "削除", job_comment_path(@job, comment), method: :delete, class: 'btn btn-danger' %></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
+      </div>
     </div>
-
-
-
-    <h1>折れ線グラフ</h1>
-  <canvas id="myLineChart"></canvas>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-
-  <script>
-  var ctx = document.getElementById("myLineChart");
-  var myLineChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      // labels: [],
-      datasets: [
-        {
-          label: 'PV数',
-          data: [<%= @job.impressionist_count(:filter=>:session_hash) %>],
-          borderColor: "rgba(255,0,0,1)",
-          backgroundColor: "rgba(0,0,0,0)"
-        },
-        {
-          label: '商談予約数',
-          data: [<%= @job.orders.count %>],
-          borderColor: "rgba(0,0,255,1)",
-          backgroundColor: "rgba(0,0,0,0)"
-        }
-      ],
-    },
-    options: {
-      title: {
-        display: true,
-        text: '年間詳細'
-      },
-      scales: {
-        xAxes: [{
-            type: 'datetime',
-            ticks: {
-              callback: function(value) {return ((value % 10) == 0)? value : ''},
-              min: 0,
-              max: 50,
-              stepSize: 1
-            }
-          }],
-        yAxes: [{
-          ticks: {
-            beginAtZero:true,
-            suggestedMax: 40,
-            suggestedMin: 0,
-            stepSize: 10,
-            callback: function(value, index, values){
-              return  value +  '件'
-            }
-          }
-        }]
-      },
-    }
-  });
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center mt-5">
+      <%= render 'show_order', orders: @orders %>
+    </div>
+  </div>
 </div>

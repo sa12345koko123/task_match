@@ -1,0 +1,103 @@
+<h3>予約アクセス数</h3>
+   <div class="table_width">
+    <table class='table table-bordered'>
+      <thead>
+        <tr>
+          <th>今月の予約アクセス数</th>
+          <th>前月の予約アクセス数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @this_month_order.count %></td>
+          <td><%= @last_month_order.count %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="table_width">
+    <table class='table table-bordered'>
+      <thead>
+        <tr>
+          <th>今日の予約アクセス数</th>
+          <th>前日の予約アクセス数</th>
+          <th>前日比</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @today_order.count %></td>
+          <td><%= @yesterday_order.count %></td>
+          <td>
+            <% if @yesterday_order.count == 0 %>
+              前日の予約が0のため計算できません
+            <% else %>
+              <% @the_day_before =   @today_order.count / @yesterday_order.count.to_f  %>
+              <%= (@the_day_before * 100).round %>%
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table_width">
+    <table class='table table-bordered'>
+      <thead>
+        <tr>
+          <th>今週の予約アクセス数</th>
+          <th>前週の予約アクセス数</th>
+          <th>前週比</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @this_week_order.count %></td>
+          <td><%= @last_week_order.count %></td>
+          <td>
+            <% if @last_week_order.count == 0 %>
+              前週の予約が0のため計算できません
+            <% else %>
+              <% @the_week_before = @this_week_order.count / @last_week_order.count.to_f  %>
+              <%= (@the_week_before * 100).round %>%
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<!--  <canvas id="myLineChart"></canvas>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>-->
+<!--  <script>-->
+
+<!--      var ctx = document.getElementById("myLineChart");-->
+<!--      var myLineChart = new Chart(ctx, {-->
+<!--        type: "bar",-->
+<!--        data: {-->
+<!--          labels: ["今月", "前月"],-->
+<!--          datasets: [-->
+<!--            {-->
+<!--                label: "予約アクセス数",-->
+<!--                data: [-->
+<!--                  <%#= @this_month_order.count %>-->
+<!--                  <%#= @last_month_order.count %>-->
+<!--                  ],-->
+<!--                borderWidth: 5,-->
+<!--                backgroundColor: "rgb(0, 0, 0, 0)",-->
+<!--            },-->
+<!--        ]-->
+<!--    },-->
+<!--    options: {-->
+<!--        scales: {-->
+<!--            yAxes: [{-->
+<!--                ticks: {-->
+<!--                    suggestedMax: 100,-->
+<!--                    suggestedMin: 0,-->
+<!--                }-->
+<!--            }]-->
+<!--        }-->
+<!--    }-->
+<!--})-->
+<!--  </script>-->

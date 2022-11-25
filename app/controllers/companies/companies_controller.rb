@@ -10,6 +10,13 @@ class Companies::CompaniesController < ApplicationController
 
     # @orders = @user.orders
     # @orders = @job.orders
+    @today_order = @orders.created_today
+    @yesterday_order = @orders.created_yesterday
+    @this_week_order = @orders.created_this_week
+    @last_week_order = @orders.created_last_week
+    @this_month_order = @orders.created_this_month
+    @last_month_order = @orders.created_last_month
+
 
   end
 
