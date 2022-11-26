@@ -28,6 +28,7 @@
                   };
                   f();
                 </script>
+                Powered by <%= link_to "https://newsapi.org" do %>　News API　<% end %>
               </div>
             </div>
           </div>
@@ -48,10 +49,10 @@
   <% elsif companies_company_signed_in? %>
     <div class="row">
       <div class="col-md-6 text-center">
-        <button class="button"><%= link_to '会社一覧', companies_path, class:"text-dark" %></button>
+        <button class="button"><%= link_to '会社TOP', companies_company_path(current_companies_company), class:"text-dark" %></button>
       </div>
       <div class="col-md-6 text-center">
-        <button class="button"><%= link_to '仕事依頼一覧', jobs_path, class:"text-dark" %></button>
+        <button class="button"><%= link_to '会社予定表', companies_company_blogs_path(current_companies_company), class:"text-dark" %></button>
       </div>
     </div>
   <% else %>
