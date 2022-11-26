@@ -1,60 +1,60 @@
 <div class="container">
-    <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-12">カレンダー</h4>
-    <br>
-      <div class="row">
-        <div class="col-md-4">
-	        <div class="schedule">今後の予定一覧</div>
-            <table class="table">
-              <thead class="thead-light">
-                <tr>
-                  <th>タイトル</th>
-                  <th>日程</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-              <% @blogs.each do |blog| %>
-                <tr>
-                  <td><%= link_to blog.title , companies_company_blog_path(current_companies_company, blog) %></td>
-                  <td><%= blog.start_time.strftime("%m-%d") %></td>
-                  <td><%= link_to "削除", companies_company_blog_path(current_companies_company, blog.id), method: :delete, date: {confirm: '本当に？' } %></td>
-                </tr>
-              <% end %>
-              </tbody>
-            </table>
+  <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-12">カレンダー</h4>
+  <br>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="schedule">今後の予定一覧</div>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>タイトル</th>
+                <th>日程</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @blogs.each do |blog| %>
+              <tr>
+                <td class="bg-light"><%= link_to blog.title , companies_company_blog_path(current_companies_company, blog) %></td>
+                <td class="bg-light"><%= blog.start_time.strftime("%m-%d") %></td>
+                <td class="bg-light"><%= link_to "削除", companies_company_blog_path(current_companies_company, blog.id), method: :delete, date: {confirm: '本当に？' } %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
 
-            <%= form_with model: @blog, url: companies_company_blogs_path do |f| %>
-            <div class="title">
-              <div class="form-tag">タイトル</div>
-              <%= f.text_field :title %>
-            </div>
-            <div class="content mt-2">
-              <div class="form-tag">内容</div>
-              <%= f.text_area :content %>
-            </div>
-            <div class="time mt-2">
-              <div class="form-tag">時間</div>
-              <%= f.datetime_select :start_time %>
-            </div>
-            <div class="submit mt-3">
-            <%= f.submit '予定を追加する', class: "btn btn-success" %>
-            </div>
-          <% end %>
-          <div class="back mt-3">
-            <%= link_to '会社トップに戻る', companies_company_path(current_companies_company), class: 'btn btn-secondary btn-block text-white' %>
+          <%= form_with model: @blog, url: companies_company_blogs_path do |f| %>
+          <div class="title">
+            <div class="form-tag">タイトル</div>
+            <%= f.text_field :title %>
           </div>
-        </div>
-        <br>
-        <br>
-        <div class="col-md-8">
-          <%= month_calendar events: @blogs do |date, blogs| %>
-            <%= date.day %>
-              <% blogs.each do |blog| %>
-                <div>
-                  <%= link_to blog.title, companies_company_blog_path(current_companies_company, blog) %>
-                </div>
-              <% end %>
-          <% end %>
+          <div class="content mt-2">
+            <div class="form-tag">内容</div>
+            <%= f.text_area :content %>
+          </div>
+          <div class="time mt-2">
+            <div class="form-tag">時間</div>
+            <%= f.datetime_select :start_time %>
+          </div>
+          <div class="submit mt-3">
+          <%= f.submit '予定を追加する', class: "btn btn-success" %>
+          </div>
+        <% end %>
+        <div class="back mt-3">
+          <%= link_to '会社トップに戻る', companies_company_path(current_companies_company), class: 'btn btn-secondary btn-block text-white' %>
         </div>
       </div>
+      <br>
+      <br>
+      <div class="col-md-8">
+        <%= month_calendar events: @blogs do |date, blogs| %>
+          <%= date.day %>
+            <% blogs.each do |blog| %>
+              <div>
+                <%= link_to blog.title, companies_company_blog_path(current_companies_company, blog) %>
+              </div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
 </div>
