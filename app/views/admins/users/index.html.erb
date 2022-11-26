@@ -19,7 +19,11 @@
 　    <tbody>
 　      <tr>
 　        <td><%= user.id %></td>
-　        <td><%= image_tag user.get_profile_image(100,100) %></td>
+　        <td>
+　          <% if user.profile_image.attached? %>
+　            <%= image_tag user.get_profile_image(100,100) %>
+　         <% end %>
+　        </td>
 　        <td><%= link_to admins_user_path(user) do %>
 　              <%= user.full_name %>
 　            <% end %>

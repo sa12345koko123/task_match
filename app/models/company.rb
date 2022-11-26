@@ -14,9 +14,6 @@ class Company < ApplicationRecord
 
 
 
-
-
-
   def get_company_image(width, height)
     unless company_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpeg')

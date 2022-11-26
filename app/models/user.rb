@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :orders, dependent: :destroy
   has_many :comments, dependent: :destroy
-  # has_one_attached :profile_image
+  has_one_attached :profile_image
 
   # validates :name_family, presence: true, length: { maximum:30 }
   # validates :name_first, presence: true, length: { maximum:30 }
@@ -20,13 +20,14 @@ class User < ApplicationRecord
 
 
 
-  # def get_profile_image(width, height)
-  #   unless profile_image.attached?
-  #     file_path = Rails.root.join('app/assets/images/no_image.jpeg')
-  #     profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-  #   end
-  #   profile_image.variant(resize_to_limit: [width, height]).processed
-  # end
+  def get_profile_image(width, height)
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpeg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+
 
 
   def full_name
