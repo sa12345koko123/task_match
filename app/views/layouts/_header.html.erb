@@ -14,13 +14,13 @@
 
         <% if admins_admin_signed_in? %>
           <div class="ml-3">
-            <% link_to admins_admins_path, class: 'btn btn-secondary btn-block text-white' do %>
+            <%= link_to admins_admins_path, class: 'btn btn-secondary btn-block text-white' do %>
               <i class="fas fa-user"></i>&nbsp;管理者TOP
             <% end %>
           </div>
           <div class="ml-1">
             <%= link_to destroy_admins_admin_session_path, method: :delete, class: 'btn btn btn-danger btn-block text-white' do %>
-              <i class="fas fa-sign-out-alt"></i>&nbsp;ログアウト
+              <i class="fas fa-sign-out-alt"></i>&nbsp;管理者ログアウト
             <% end %>
           </div>
         <% end %>

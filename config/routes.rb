@@ -62,7 +62,8 @@ Rails.application.routes.draw do
     }
 
     get "admins" => "homes#top"
-    patch 'users/:id/withdrawal' => 'users#withdrawal'
+    # ４ヶ月目実装
+    # patch 'users/:id/withdrawal' => 'users#withdrawal'
     resources :users, only:[:index, :show, :update]
     resources :companies, only:[:index, :show]
   end

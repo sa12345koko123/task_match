@@ -51,6 +51,7 @@
           </thead>
           <tbody>
           <% @orders.each do |order| %>
+            <% if order.user.user_status != false %>
             <tr>
               <td><%= order.user.full_name %></td>
               <td><%= link_to companies_company_job_path(@company,@jobs.ids) do %>
@@ -62,6 +63,7 @@
                 <%= order.time %>
               </td>
             </tr>
+            <% end %>
           <% end %>
           <% if @orders.blank? %>
           <tr>

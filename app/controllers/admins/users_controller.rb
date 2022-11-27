@@ -9,12 +9,13 @@ class Admins::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def withdrawal
-    @user = User.find(params[:id])
-    @user.update(user_status: false)
-    reset_session
-    redirect_to admins_users_path
-  end
+# ４ヶ月目実装
+  # def withdrawal
+  #   @user = User.find(params[:id])
+  #   @user.update(user_status: false)
+  #   reset_session
+  #   redirect_to admins_users_path
+  # end
 
    private
 	def user_params

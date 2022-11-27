@@ -40,11 +40,14 @@
 
     </table>
   </div>
-  <div class="row">
-    <div class="col-md-12 text-center mt-5">
-      <%= link_to "退会させる",  "/admins/users/#{@user.id}/withdrawal", method: :patch , class: "btn btn-danger" %>
-    </div>
-  </div>
+  <!--４ヶ月後に実装-->
+  <!--<div class="row">-->
+  <!--	<%# if @user.name_family != "guestuser" %>-->
+  <!--  <div class="col-md-12 text-center mt-5">-->
+  <!--    <%#= link_to "退会させる",  "/admins/users/#{@user.id}/withdrawal", method: :patch , class: "btn btn-danger" %>-->
+  <!--  </div>-->
+  <!--  <%# end %>-->
+  <!--</div>-->
   <div class="row">
     <div class="col-md-12 text-right mt-5">
 　　　<%= link_to '顧客一覧に戻る', admins_users_path %>
