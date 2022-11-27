@@ -35,3 +35,8 @@
 #     { name: '未経験OK'},
 #     { name: '経験者大歓迎'}
 #     ])
+
+Admin.create!(
+     email: 'admin@admin',
+     password: 'admin1',
+ )

@@ -3,10 +3,10 @@
     <h4 class="col-md-12 mt-2 text-center bg-secondary text-white">会社詳細</h4>
   </div>
   <div class="row">
-    <div class="col-md-5 text-center mt-4">
-      <%= image_tag @company.get_company_image(200,100) %>
+    <div class="col-md-6 text-center mt-4">
+      <%= image_tag @company.get_company_image(200,200) %>
     </div>
-    <div class="col-md-7 mt-4">
+    <div class="col-md-6 text-left mt-4">
       <div>
         <label><strong>会社名：</strong></label>
         <p style="display:inline;"><%= @company.company_name %></p>
@@ -30,16 +30,14 @@
         <label><strong>ホームページURL：</strong></label>
         <p style="display:inline;"><%= @company.home_page %></p>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 mt-5 ml-5">
-      <div>
+
+      <div class="mt-2">
         <label><strong>概要:</strong></label>
         <p style="display:inline;"><%= @company.overview %></p>
       </div>
     </div>
   </div>
+
   <div class="row">
     <h4 class="mt-5 text-center col-md-12">仕事依頼一覧</h4>
   </div>
@@ -81,7 +79,7 @@
   <div class="row">
     <div class="col-md-12 text-center mt-5">
       <%= link_to '仕事依頼一覧', jobs_path, class: "btn btn-success" %>
-　　　<%= link_to '仕事一覧に戻る', companies_path, class: "btn btn-success" %>
+　　　<%= link_to '仕事一覧に戻る', companies_path, class: "btn btn-secondary" %>
     </div>
   </div>
 </div>

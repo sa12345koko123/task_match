@@ -2,8 +2,6 @@ class Public::OrdersController < ApplicationController
 
   def index
     @job = Job.find(params[:job_id])
-    # @order = params[:job_id]
-    # @orders = @order.job
     # byebug
     @orders = Order.all
     #@orders = Order.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)

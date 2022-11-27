@@ -24,7 +24,7 @@
         <p style="display:inline;" class="text-success">受付中</p>
           <%= form_with url: user_orders_path(current_user), method: :get, local: true do |f| %>
             <%= f.hidden_field :job_id, value: params[:id] %>
-            <%= f.submit '予約情報を入力する', class: "btn btn-success" %>
+            <%= f.submit '商談日を選択する', class: "btn btn-success" %>
           <% end %>
         <% else %>
          <p style="display:inline;" class="text-secondary">締切中</p>

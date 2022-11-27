@@ -56,7 +56,7 @@ Rails.application.routes.draw do
 
 
   namespace :admins do
-    devise_for :admins, controllers: {
+    devise_for :admins,skip:[:registrations,:passwords],controllers: {
       sessions: 'admins/sessions',
       registrations: 'admins/registrations'
     }
