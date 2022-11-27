@@ -53,14 +53,14 @@
       <tbody>
       <% @jobs.each do |job| %>
         <tr>
-          <td><%= job.id %></td>
-          <td>
+          <td class="bg-light"><%= job.id %></td>
+          <td class="bg-light">
             <%= link_to job_path(job) do %>
               <%= job.title %>
             <% end %>
           </td>
-          <td><%= job.unit_price %></td>
-          <td>
+          <td class="bg-light"><%= job.unit_price %></td>
+          <td class="bg-light">
             <% if job.job_status == true %>
               <p class="text-success ">受付中</p>
             <% else %>

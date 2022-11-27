@@ -11,15 +11,15 @@
     <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= job.id %></td>
-        <td>
+        <td class="bg-light"><%= job.id %></td>
+        <td class="bg-light">
           <%= link_to companies_company_job_path(@company,job.id) do %>
             <%= job.title %>
           <% end %>
         </td>
-        <td><%= job.description %></td>
-        <td><%= job.unit_price %></td>
-        <td>
+        <td class="bg-light"><%= job.description %></td>
+        <td class="bg-light"><%= job.unit_price %></td>
+        <td class="bg-light">
           <% if job.job_status == true %>
             <p class="text-success ">受付中</p>
           <% else %>
