@@ -1,12 +1,12 @@
-<h3>予約アクセス数</h3>
+<h3>商談アクセス数</h3>
 <div class="row">
   <div class="col-md-4 mt-3">
     <div class="table_width">
       <table class='table table-bordered'>
         <thead>
           <tr>
-            <th>今月の<br />予約アクセス数</th>
-            <th>前月の<br />予約アクセス数</th>
+            <th>今月の<br />商談アクセス数</th>
+            <th>前月の<br />商談アクセス数</th>
           </tr>
         </thead>
         <tbody>
@@ -22,8 +22,8 @@
       <table class='table table-bordered'>
         <thead>
           <tr>
-            <th scope="col" style="width: 5%">今日の予約アクセス数</th>
-            <th scope="col" style="width: 5%">前日の予約アクセス数</th>
+            <th scope="col" style="width: 5%">今日の商談アクセス数</th>
+            <th scope="col" style="width: 5%">前日の商談アクセス数</th>
             <th scope="col" style="width: 5%">前日比</th>
           </tr>
         </thead>
@@ -33,7 +33,7 @@
             <td><%= @yesterday_order.count %></td>
             <td>
               <% if @yesterday_order.count == 0 %>
-                前日の予約が0のため計算できません
+                前日の商談が0のため計算できません
               <% else %>
                 <% @the_day_before =   @today_order.count / @yesterday_order.count.to_f  %>
                 <%= (@the_day_before * 100).round %>%
@@ -47,8 +47,8 @@
       <table class='table table-bordered'>
         <thead>
           <tr>
-            <th scope="col" style="width: 5%">今週の予約アクセス数</th>
-            <th scope="col" style="width: 5%">前週の予約アクセス数</th>
+            <th scope="col" style="width: 5%">今週の商談アクセス数</th>
+            <th scope="col" style="width: 5%">前週の商談アクセス数</th>
             <th scope="col" style="width: 5%">前週比</th>
           </tr>
         </thead>
@@ -58,7 +58,7 @@
             <td><%= @last_week_order.count %></td>
             <td>
               <% if @last_week_order.count == 0 %>
-                前週の予約が0のため計算できません
+                前週の商談が0のため計算できません
               <% else %>
                 <% @the_week_before = @this_week_order.count / @last_week_order.count.to_f  %>
                 <%= (@the_week_before * 100).round %>%
@@ -81,7 +81,7 @@
           labels: ["今月", "前月"],
           datasets: [
             {
-              label: "予約アクセス数",
+              label: "商談アクセス数",
               data: [
                 <%= @this_month_order.count %>,
                 <%= @last_month_order.count %>

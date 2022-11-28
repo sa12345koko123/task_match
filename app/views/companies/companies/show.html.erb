@@ -43,13 +43,13 @@
 
   <div class="row">
     <div class="col-12 mt-5 text-center mx-auto">
-      <h3>予約一覧</h3>
+      <h3>受付一覧</h3>
       <table class="table mt-3">
         <thead>
           <tr>
             <th>ご予約様</th>
         	  <th>依頼タイトル</th>
-            <th>予約日</th>
+            <th>商談日</th>
           </tr>
         </thead>
         <tbody>
@@ -70,7 +70,7 @@
         <% end %>
         <% if @orders.blank? %>
         <tr>
-          <td>予約はありません。</td>
+          <td>商談日はありません。</td>
         </tr>
         <% end %>
         </tbody>

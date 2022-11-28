@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12 text-center title">
-      <h1>新規予約画面</h1>
+      <h1>新規受付画面</h1>
     </div>
     <div class="col-12 mt-3 content">
       <%= form_with model: @order, url: user_orders_path(current_user, job: @job), local: true, class: 'form' do |f| %>
@@ -21,7 +21,7 @@
         <%= f.hidden_field :start_time, value: @start_time %>
 
       <div class="submit">
-        <%= f.submit value: '予約する', class: 'btn btn-primary mx-auto d-block' %>
+        <%= f.submit value: '確定する', class: 'btn btn-primary mx-auto d-block' %>
       </div>
       <% end %>
     </div>

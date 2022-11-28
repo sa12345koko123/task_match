@@ -1,4 +1,4 @@
-<h4>7日間分の予約アクセス数</h4>
+<h4>7日間分の商談アクセス数</h4>
   <table class='table table-bordered'>
     <thead>
       <tr>
@@ -34,7 +34,7 @@
           labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
           datasets: [
             {
-              label: '予約アクセス数',
+              label: '商談アクセス数',
               data: [
                 <%= @orders.created_6day_ago.count %>,
                 <%= @orders.created_5day_ago.count %>,
@@ -53,7 +53,7 @@
         options: {
           title: {
             display: true,
-            text: '7日間の予約アクセス数の比較'
+            text: '7日間の商談アクセス数の比較'
           },
           responsive: true,
           scales: {
