@@ -1,6 +1,7 @@
 class Public::JobsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
+# このアクションが実行されるとPV数カウントされる
   impressionist :actions => [:show]
 
   def index
@@ -14,6 +15,7 @@ class Public::JobsController < ApplicationController
     @comment = Comment.new
     @comments = @job.comments
     @job_tags = @job.tags
+    # 新規登録した1人に対象
      impressionist(@job, nil, unique: [:session_hash.to_s])
   end
 

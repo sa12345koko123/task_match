@@ -38,11 +38,7 @@ class User < ApplicationRecord
     self.name_family_kana + " " + self.name_first_kana
   end
 
-
-
-
-
-
+# ゲストログイン
   def self.guest
     User.find_or_create_by!(name_family:'guestuser', name_first:'太郎', name_family_kana:'シサク', name_first_kana:'タロウ', email:'xxx@webcamp.jp', handle_name:'タロー', phone_number:'00000000000', address:'テスト県テスト市0000', postal_code:'0000000') do |user|
       user.password = SecureRandom.urlsafe_base64

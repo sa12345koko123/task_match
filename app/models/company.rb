@@ -22,7 +22,7 @@ class Company < ApplicationRecord
     company_image.variant(resize_to_limit: [width, height]).processed
   end
 
-
+# ゲストログイン
   def self.guest
     Company.find_or_create_by!(email:'zzz@webcamp.', company_name:'guestcompany', address:'問題県問題市0000', phone_number:'0000000000') do |company|
       company.password = SecureRandom.urlsafe_base64
