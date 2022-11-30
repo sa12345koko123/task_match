@@ -57,9 +57,9 @@
           <% if order.user.user_status != false %>
           <tr>
             <td><%= order.user.full_name %></td>
-            <td><%= link_to companies_company_job_path(@company,@jobs.ids) do %>
+            <td><%#= link_to companies_company_job_path(@company,@jobs.ids) do %>
         	        <%= order.job.title %>
-        	      <% end %>
+        	      <%# end %>
         	  </td>
             <td>
               <%= order.day %>
