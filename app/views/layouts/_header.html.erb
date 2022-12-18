@@ -1,5 +1,5 @@
 <header class="heder" style="background-color:rgb(0, 0, 0);;">
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-lg navbar-light md-4">
     <div class="container">
       <a class="navbar-brand"></a>
       <% if user_signed_in? %>
@@ -10,7 +10,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-
 
         <% if admins_admin_signed_in? %>
           <div class="ml-3">
@@ -26,22 +25,22 @@
         <% end %>
 
 
-        <%if companies_company_signed_in? %>
-          <div class="ml-1">
+        <% if companies_company_signed_in? %>
+          <div class="ml-1 text-center">
             <%= link_to companies_company_path(current_companies_company), class: 'btn btn-secondary btn-block text-white' do %>
 　　　　　　　<i class="fas fa-sign-out-alt"></i>&nbsp;会社TOP
             <% end %>
           </div>
 
-          <div class="ml-1">
+          <div class="ml-1 text-center">
             <%= link_to companies_company_blogs_path(current_companies_company), class: 'btn btn-primary btn-block text-white' do %>
 　　　　　　　<i class="fas fa-sign-out-alt"></i>&nbsp;会社予定表
             <% end %>
           </div>
 
 
-          <div class="ml-1">
-            <%= link_to destroy_companies_company_session_path, method: :delete, class: 'btn btn btn-danger btn-block text-white' do %>
+          <div class="ml-1 text-center">
+            <%= link_to destroy_companies_company_session_path, method: :delete, class: 'btn btn-danger text-white' do %>
               <i class="fas fa-sign-out-alt"></i>&nbsp;会社ログアウト
             <% end %>
           </div>
@@ -50,7 +49,7 @@
 
         <% if user_signed_in? %>
           <div class="ml-1">
-            <%= link_to user_path(current_user), class: 'btn btn-primary btn-block text-white' do %>
+            <%= link_to user_path(current_user), class: 'btn btn btn-primary btn-block text-white' do %>
 　　　　　　　<i class="fas fa-sign-out-alt"></i>&nbsp;マイページ
             <% end %>
           </div>

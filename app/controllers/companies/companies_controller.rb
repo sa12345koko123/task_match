@@ -1,5 +1,5 @@
 class Companies::CompaniesController < ApplicationController
-  # before_action :authenticate_companies_company!, except: [:index]
+
 
   def show
     @company = Company.find(params[:id])
@@ -8,8 +8,6 @@ class Companies::CompaniesController < ApplicationController
     @orders = Order.where(job_id: @company.jobs.ids)
     # @orders = Order.all
 
-    # @orders = @user.orders
-    # @orders = @job.orders
     @today_order = @orders.created_today
     @yesterday_order = @orders.created_yesterday
     @this_week_order = @orders.created_this_week
@@ -37,7 +35,6 @@ class Companies::CompaniesController < ApplicationController
   end
 
   def guest_sign_in
-    # binding.pry
     company = Company.guest
     sign_in company
     redirect_to companies_company_path(company), notice: 'guestcompanyでログインしました。'

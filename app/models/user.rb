@@ -8,11 +8,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :profile_image
 
-  # validates :name_family, presence: true, length: { maximum:30 }
-  # validates :name_first, presence: true, length: { maximum:30 }
-  # validates :name_family_kana, presence: true, length: { maximum:30 }
-  # validates :name_first_kana, presence: true, length: { maximum:30 }
-  # validates :phone_number, presence: true, numericality: { only_integer:true } ,length: { maximum:21 }, on: :update
+
   validates :address, presence: true ,length: { maximum:161 }, on: :update
   validates :postal_code, presence: true , length: { is:7} , numericality: { only_interger:true }, on: :update
 

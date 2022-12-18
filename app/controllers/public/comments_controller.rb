@@ -4,7 +4,6 @@ class Public::CommentsController < ApplicationController
     @job = Job.find(params[:job_id])
     @comment = @job.comments.new(comment_params)
     @comment.user_id = current_user.id
-    # byebug
     if @comment.save
       redirect_to request.referer
     else

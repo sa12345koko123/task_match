@@ -12,7 +12,6 @@ class Companies::JobsController < ApplicationController
     @job.company_id = current_companies_company.id
     tag_list = params[:job][:tag_name].split(',')
     if @job.save
-      # binding.pry
       @job.save_tag(tag_list)
       flash[:notice] = '仕事を追加しました'
       redirect_to companies_company_jobs_path
@@ -24,10 +23,6 @@ class Companies::JobsController < ApplicationController
   end
 
   def index
-    # logger.debug '=============================================================='
-    # logger.debug params[:id].inspect
-    # logger.debug params[:company_id]
-    # logger.debug '=============================================================='
     @company = Company.find(params[:company_id])
     @jobs = @company.jobs
     @tag_list = Tag.all
