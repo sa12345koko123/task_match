@@ -22,7 +22,6 @@
                   f();
                 </script>
                 Powered by <%= link_to "https://newsapi.org" do %>　News API　<% end %>
-              </div>
             </div>
           </div>
         </div>
@@ -31,7 +30,26 @@
   </div>
 
   <% if user_signed_in? %>
-    <div class="row">
+    <div class="col">
+      <h2>新着依頼</h2>
+      <div class="row row-cols-1 row-cols-md-4 g-3">
+        <% @jobs.first(4).each do |job| %>
+        <div class="card">
+          <div class="card text-derk border-secondary text-left" style="max-width: 18rem;">
+            <div class="card-header"><%= job.unit_price %>円~</div>
+            <div class="card-body">
+              <h5 class="card-title"><%= job.title %></h5>
+              <p class="card-text"><%= job.description %></p>
+              <div class="show text-right">
+                <%= link_to "詳細へ", job_path(job), class: "btn btn-success" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row mt-3">
       <div class="col-md-6 text-center">
         <button class="button"><%= link_to '会社一覧', companies_path, class:"text-dark" %></button>
       </div>
@@ -40,7 +58,7 @@
       </div>
     </div>
   <% elsif companies_company_signed_in? %>
-    <div class="row">
+    <div class="row mt-3">
       <div class="col-md-6 text-center">
         <button class="button"><%= link_to '会社TOP', companies_company_path(current_companies_company), class:"text-dark" %></button>
       </div>
@@ -49,7 +67,7 @@
       </div>
     </div>
   <% else %>
-    <div class="row">
+    <div class="row mt-3">
       <div class="col-md-4 text-center">
         <button class="button"><%= link_to '会社一覧', companies_path, class:"text-dark" %></button>
       </div>
