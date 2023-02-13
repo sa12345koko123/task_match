@@ -1,85 +1,113 @@
 <div class="container">
   <h4 class="mt-2 p-2 text-center bg-secondary text-white col-md-12">会社名:<%= @company.company_name %>様</h4>
-  <div class="row">
-    <div class="col-md-3 mt-5 text-center">
-      <%= image_tag @company.get_company_image(200,200) %>
-    </div>
-    <div class="col-md-9 mt-5">
-      <table class="table table-borderless h4">
-        <tr>
-          <th>会社住所:</th>
-          <td><%= @company.address %></td>
-        </tr>
 
-        <tr>
-          <th>会社電話番号:</th>
-          <td><%= @company.phone_number %></td>
-        </tr>
 
-        <tr>
-          <th>ホームページURL:</th>
-          <td><%= @company.home_page %></td>
-        </tr>
+  <div class="wrap">
+    <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">プロフィール</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="job-tab" data-toggle="tab" href="#job" role="tab" aria-controls="job" aria-selected="false">受付一覧</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="statistics-tab" data-toggle="tab" href="#statistics" role="tab" aria-controls="statistics" aria-selected="false">統計</a>
+      </li>
+      <!--<li class="nav-item">-->
+      <!--  <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false"></a>-->
+      <!--</li>-->
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="row">
+          <div class="col-md-3 mt-5 text-center">
+            <%= image_tag @company.get_company_image(200,200) %>
+          </div>
+          <div class="col-md-9 mt-5">
+            <table class="table table-borderless h4">
+              <tr>
+                <th>会社住所:</th>
+                <td><%= @company.address %></td>
+              </tr>
 
-        <tr>
-          <th>仕事依頼数:</th>
-          <td><%= @jobs.count %>件</td>
-        </tr>
-        <tr>
-          <th>概要:</th>
-          <td><%= @company.overview %></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 mt-5 text-center">
-      <% if @company.company_name != "guestcompany" %>
-        <%= link_to '会社情報の編集', edit_companies_company_path, class: "btn btn-success" %>&emsp;&emsp;&emsp;&emsp;
-      <% end %>
-      <%= link_to '仕事一覧', companies_company_jobs_path(@company), class: 'btn btn-secondary' %>
-    </div>
-  </div>
+              <tr>
+                <th>会社電話番号:</th>
+                <td><%= @company.phone_number %></td>
+              </tr>
 
-  <div class="row">
-    <div class="col-12 mt-5 text-center mx-auto">
-      <h3>受付一覧</h3>
-      <table class="table mt-3">
-        <thead>
-          <tr>
-            <th>ご予約様</th>
-        	  <th>依頼タイトル</th>
-            <th>商談日</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @orders.each do |order| %>
-          <% if order.user.user_status != false %>
-          <tr>
-            <td><%= order.user.full_name %></td>
-            <td><%#= link_to companies_company_job_path(@company,@jobs.ids) do %>
-        	        <%= order.job.title %>
-        	      <%# end %>
-        	  </td>
-            <td>
-              <%= order.day %>
-              <%= order.time %>
-            </td>
-          </tr>
-          <% end %>
-        <% end %>
-        <% if @orders.blank? %>
-        <tr>
-          <td>商談日はありません。</td>
-        </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center mt-5">
-      <%= render 'orders_show',orders: @orders %>
+              <tr>
+                <th>ホームページURL:</th>
+                <td><%= @company.home_page %></td>
+              </tr>
+
+              <tr>
+                <th>仕事依頼数:</th>
+                <td><%= @jobs.count %>件</td>
+              </tr>
+              <tr>
+                <th>概要:</th>
+                <td><%= @company.overview %></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 mt-5 text-center">
+            <% if @company.company_name != "guestcompany" %>
+              <%= link_to '会社情報の編集', edit_companies_company_path, class: "btn btn-success" %>&emsp;&emsp;&emsp;&emsp;
+            <% end %>
+            <%= link_to '仕事一覧', companies_company_jobs_path(@company), class: 'btn btn-secondary' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="job" role="tabpanel" aria-labelledby="job-tab">
+        <div class="row">
+          <div class="col-12 mt-5 text-center mx-auto">
+            <h3>受付一覧</h3>
+            <table class="table mt-3">
+              <thead>
+                <tr>
+                  <th>ご予約様</th>
+              	  <th>依頼タイトル</th>
+                  <th>商談日</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @orders.each do |order| %>
+                <% if order.user.user_status != false %>
+                <tr>
+                  <td><%= order.user.full_name %></td>
+                  <td><%#= link_to companies_company_job_path(@company,@jobs.ids) do %>
+              	        <%= order.job.title %>
+              	      <%# end %>
+              	  </td>
+                  <td>
+                    <%= order.day %>
+                    <%= order.time %>
+                  </td>
+                </tr>
+                <% end %>
+              <% end %>
+              <% if @orders.blank? %>
+              <tr>
+                <td>商談日はありません。</td>
+              </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
+        <div class="row">
+          <div class="col-md-12 text-center mt-5">
+            <%= render 'orders_show',orders: @orders %>
+          </div>
+        </div>
+      </div>
+      <!--<div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>-->
     </div>
   </div>
 </div>
