@@ -24,6 +24,13 @@
             <%= f.select :job_status, [['受付中', true], ['締切中', false]] %>
           </td>
         </tr>
+
+        <tr>
+          <td>タグ</td>
+          <td><%= f.text_field :tag_name, placeholder:"例：未経験あり ※文字の間に,を入れると複数入れられます" , class: "form-control" %></td>
+        </tr>
+
+
       </table>
       <div class="col-md-12 text-center">
       <%= f.submit '更新する', class: "btn btn-success" %>

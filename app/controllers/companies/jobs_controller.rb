@@ -45,13 +45,26 @@ class Companies::JobsController < ApplicationController
 
   def update
     @job = Job.find(params[:id])
+
+    tag_list = params[:job][:tag_name].split(',')
+
     if @job.update(job_params)
+    # if params[:job][:job_status]== "受付中"
+  # このjob_idに紐づいていたタグを@oldに入れる
+      @old_relations=JobTag.where(job_id: @job.id)
+  # それらを取り出し、消す。消し終わる
+      @old_relations.each do |relation|
+      relation.delete
+      end
+       @job.save_tag(tag_list)
+
       flash[:notice] = '仕事を更新しました'
       @company =Company.find(params[:company_id])
       redirect_to companies_company_job_path(@company)
     else
       @company =Company.find(params[:company_id])
       render :edit
+    # end
     end
   end
 

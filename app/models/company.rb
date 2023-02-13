@@ -31,3 +31,7 @@ class Company < ApplicationRecord
   end
 
 end
+
+Company.find_by(email:'zzz@webcamp.', company_name:'guestcompany', address:'問題県問題市0000', phone_number:'0000000000')
+
+

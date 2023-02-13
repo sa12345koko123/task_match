@@ -3,6 +3,8 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_inactive_user, only: [:create]
+  # before_action :ensure_general_user, only: [:edit, :update]
+
 
   # GET /resource/sign_in
   # def new
@@ -32,6 +34,12 @@ class Users::SessionsController < Devise::SessionsController
     sign_in user
     redirect_to user_path(user), notice: 'guestuserでログインしました。'
   end
+
+  # def ensure_general_user
+  #   if resource.email == "xxx@webcamp.jp"
+  #     redirect_to root_path, alert: "ゲストユーザーの変更・削除はできません"
+  #   end
+  # end
 
 
 
