@@ -9,7 +9,7 @@
 // require("channels")
 // require("jquery")
 
-
+import "./about.js"
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
