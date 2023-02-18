@@ -5,8 +5,16 @@ class Public::JobsController < ApplicationController
   impressionist :actions => [:show]
 
   def index
-    @jobs = Job.all
+    # @jobs = Job.all
     @tag_list = Tag.all
+
+    if params[:latest]
+      @jobs = Job.latest
+    elsif params[:old]
+      @jobs = Job.old
+    else
+      @jobs = Job.all
+    end
   end
 
   def show
@@ -24,6 +32,7 @@ class Public::JobsController < ApplicationController
     @tag = Tag.find(params[:tag_id])
     @jobs = @tag.jobs.all
   end
+
 
 
 

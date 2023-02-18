@@ -46,6 +46,10 @@ Rails.application.routes.draw do
     end
     resources :jobs, only:[:index, :show] do
       resources :comments, only: [:create, :destroy]
+      get 'jobd/search/sort_new', to: 'jobs#search', as: 'sort_new'
+      get 'jobs/search/sort_old', to: 'jobs#search', as: 'sort_old'
+      get 'jobs/search/sort_join', to: 'jobs#search', as: 'sort_join'
+
     end
 
   end

@@ -33,4 +33,8 @@ class Job < ApplicationRecord
     end
   end
 
+
+  scope :latest, -> {order(updated_at: :desc)}
+  scope :old, -> {order(updated_at: :asc)}
+
 end
